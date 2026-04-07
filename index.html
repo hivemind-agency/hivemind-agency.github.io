@@ -238,8 +238,8 @@
         <li><a href="#pricing">Pricing</a></li>
     </ul>
     <div class="nav-right">
-        <a href="mailto:hello@hivemindagency.ai" class="btn-nav-ghost">Contact</a>
-        <a href="#contact" class="btn-nav-primary">Book a Demo →</a>
+        <a href="mailto:boris@hivemindagency.ai" class="btn-nav-ghost">Contact</a>
+        <a href="#" onclick="openBooking(event)" class="btn-nav-primary">Book a Demo →</a>
     </div>
 </nav>
 
@@ -250,7 +250,7 @@
         <h1>Never miss a customer<br><em>again.</em></h1>
         <p class="hero-sub">Atlas by HiveMind AI handles your leads, support, bookings, and social media 24/7 — so you can focus on the work, not the phone.</p>
         <div class="hero-actions">
-            <a href="#contact" class="btn-primary">Book a Free Demo →</a>
+            <a href="#" onclick="openBooking(event)" class="btn-primary">Book a Free Demo →</a>
             <a href="#agents" class="btn-secondary">See How It Works</a>
         </div>
         <div class="hero-proof">
@@ -515,7 +515,7 @@
         <div class="section-eyebrow" style="color:rgba(255,255,255,0.4);justify-content:center;display:flex;">Get Started</div>
         <h2 class="section-title" style="font-size:clamp(2.2rem,4vw,3.5rem);margin-bottom:1rem;">Ready to put your front office<br><em>on autopilot?</em></h2>
         <p>Book a free 30 minute demo. We'll show you Atlas live with your business name on it. No commitment required.</p>
-        <a href="mailto:hello@hivemindagency.ai" class="btn-cta">Book Your Free Demo →</a>
+        <a href="#" onclick="openBooking(event)" class="btn-cta">Book Your Free Demo →</a>
         <div class="cta-note">No contracts · No commitments · Just results</div>
     </div>
 </section>
@@ -545,7 +545,7 @@
         <ul class="footer-links">
             <li><a href="#agents">Agents</a></li><li><a href="#pricing">Pricing</a></li>
             <li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li>
-            <li><a href="mailto:hello@hivemindagency.ai">Contact</a></li>
+            <li><a href="mailto:boris@hivemindagency.ai">Contact</a></li>
         </ul>
         <p class="footer-copy">© 2026 HiveMind AI LLC. All rights reserved.</p>
     </div>
@@ -559,3 +559,16 @@
     reveals.forEach(el => observer.observe(el));
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e)
+<!-- Booking Modal -->
+<div id="booking-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:16px;width:90%;max-width:760px;height:80vh;position:relative;overflow:hidden;">
+    <button onclick="closeBooking()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#555;z-index:1;">✕</button>
+    <iframe src="https://api.leadconnectorhq.com/widget/booking/AkL6VkeO4BirMQepj3eH" style="width:100%;height:100%;border:none;" scrolling="no"></iframe>
+  </div>
+</div>
+<script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+<script>
+function openBooking(e) { e.preventDefault(); var m=document.getElementById('booking-modal'); m.style.display='flex'; document.body.style.overflow='hidden'; }
+function closeBooking() { var m=document.getElementById('booking-modal'); m.style.display='none'; document.body.style.overflow=''; }
+document.getElementById('booking-modal').addEventListener('click', function(e) { if(e.target===this) closeBooking(); });
+</script>
