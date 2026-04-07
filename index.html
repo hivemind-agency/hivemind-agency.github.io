@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiveMind AI — Never Miss a Customer Again</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --white: #ffffff; --off: #fafaf8; --ink: #0f0f0f; --ink-2: #2a2a2a; --ink-3: #555555;
+            --line: #e8e8e4; --line-2: #d4d4cc; --accent: #2563eb; --accent-light: #eff6ff;
+            --accent-mid: rgba(37,99,235,0.12); --green: #16a34a; --green-light: #f0fdf4;
+            --amber: #d97706; --amber-light: #fffbeb;
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-sans: 'Inter', system-ui, sans-serif;
+            --radius: 16px; --radius-lg: 24px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+            --shadow-lg: 0 4px 6px rgba(0,0,0,0.05), 0 16px 40px rgba(0,0,0,0.1);
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-sans); background: var(--white); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255,255,255,0.92); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+            padding: 0 2rem; height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); }
+        .logo-mark { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+        .logo-text { font-size: 1rem; font-weight: 600; letter-spacing: -0.02em; }
+        .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+        .nav-links a { color: var(--ink-3); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 0.4rem 0.875rem; border-radius: 8px; transition: all 0.2s; }
+        .nav-links a:hover { color: var(--ink); background: var(--off); }
+        .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+        .btn-nav-ghost { color: var(--ink-2); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--line-2); transition: all 0.2s; }
+        .btn-nav-ghost:hover { border-color: var(--ink-3); background: var(--off); }
+        .btn-nav-primary { background: var(--ink); color: white; text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 0.5rem 1.25rem; border-radius: 8px; transition: all 0.2s; }
+        .btn-nav-primary:hover { background: var(--ink-2); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .hero { padding: 5rem 2rem 4rem; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--green-light); border: 1px solid #bbf7d0; color: var(--green); padding: 0.3rem 0.75rem; border-radius: 100px; font-size: 0.78rem; font-weight: 500; margin-bottom: 1.5rem; }
+        .badge-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s ease infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(0.8); } }
+        .hero h1 { font-family: var(--font-serif); font-size: clamp(2.8rem, 4.5vw, 4rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+        .hero h1 em { font-style: italic; color: var(--accent); }
+        .hero-sub { font-size: 1.05rem; color: var(--ink-3); line-height: 1.7; margin-bottom: 2rem; font-weight: 300; }
+        .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+        .btn-primary { background: var(--ink); color: white; text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.75rem 1.75rem; border-radius: 10px; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+        .btn-primary:hover { background: var(--ink-2); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .btn-secondary { background: white; color: var(--ink-2); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.75rem 1.75rem; border-radius: 10px; border: 1px solid var(--line-2); transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+        .btn-secondary:hover { border-color: var(--ink-3); transform: translateY(-1px); box-shadow: var(--shadow); }
+        .hero-proof { display: flex; align-items: center; gap: 0.75rem; font-size: 0.82rem; color: var(--ink-3); }
+        .proof-avatars { display: flex; }
+        .proof-avatar { width: 28px; height: 28px; border-radius: 50%; border: 2px solid white; margin-left: -8px; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 600; color: white; }
+        .proof-avatar:first-child { margin-left: 0; }
+        .pa-1 { background: #3b82f6; } .pa-2 { background: #8b5cf6; } .pa-3 { background: #10b981; } .pa-4 { background: #f59e0b; }
+        .proof-stars { color: #f59e0b; font-size: 0.7rem; }
+        .phone-mockup { background: var(--ink); border-radius: 32px; padding: 1.5rem; box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0,0,0,0.1); max-width: 320px; margin: 0 auto; position: relative; }
+        .phone-notch { width: 80px; height: 24px; background: var(--ink); border-radius: 0 0 16px 16px; margin: 0 auto 1rem; position: relative; z-index: 1; }
+        .phone-screen { background: #f8f9fa; border-radius: 20px; overflow: hidden; }
+        .sms-header { background: white; padding: 0.75rem 1rem; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 0.6rem; }
+        .sms-avatar { width: 32px; height: 32px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: white; font-weight: 600; flex-shrink: 0; }
+        .sms-name { font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+        .sms-status { font-size: 0.65rem; color: var(--green); font-weight: 500; }
+        .sms-body { padding: 0.875rem; display: flex; flex-direction: column; gap: 0.6rem; }
+        .sms-bubble { padding: 0.6rem 0.875rem; border-radius: 14px; font-size: 0.75rem; line-height: 1.5; max-width: 85%; }
+        .sms-in { background: white; color: var(--ink); border-radius: 4px 14px 14px 14px; align-self: flex-start; box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
+        .sms-out { background: var(--accent); color: white; border-radius: 14px 4px 14px 14px; align-self: flex-end; }
+        .sms-time { font-size: 0.6rem; color: var(--ink-3); text-align: center; }
+        .alert-card { position: absolute; bottom: -20px; right: -30px; background: white; border-radius: 14px; padding: 0.875rem 1rem; box-shadow: var(--shadow-lg); border: 1px solid var(--line); min-width: 180px; animation: floatCard 4s ease-in-out infinite; }
+        @keyframes floatCard { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .alert-tag { display: flex; align-items: center; gap: 0.4rem; font-size: 0.65rem; font-weight: 600; color: var(--green); margin-bottom: 0.4rem; }
+        .alert-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+        .alert-title { font-size: 0.78rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+        .alert-sub { font-size: 0.68rem; color: var(--ink-3); }
+        .score-badge { position: absolute; top: -15px; left: -25px; background: #fef3c7; border: 1px solid #fde68a; border-radius: 100px; padding: 0.3rem 0.75rem; font-size: 0.7rem; font-weight: 600; color: var(--amber); animation: floatCard 5s ease-in-out infinite reverse; }
+        .logos-section { background: var(--off); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 2rem; text-align: center; }
+        .logos-label { font-size: 0.78rem; color: var(--ink-3); font-weight: 500; margin-bottom: 1.5rem; letter-spacing: 0.04em; }
+        .logos-row { display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; }
+        .logo-item { font-size: 0.85rem; font-weight: 600; color: var(--line-2); letter-spacing: 0.05em; text-transform: uppercase; }
+        .section { padding: 5rem 2rem; } .section-alt { background: var(--off); }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-eyebrow { font-size: 0.78rem; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
+        .section-title { font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .section-title em { font-style: italic; color: var(--accent); }
+        .section-lead { font-size: 1rem; color: var(--ink-3); max-width: 520px; line-height: 1.7; font-weight: 300; }
+        .problem-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .problem-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .prob-card { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; transition: all 0.25s; }
+        .prob-card:hover { border-color: var(--line-2); box-shadow: var(--shadow); transform: translateY(-2px); }
+        .prob-icon { font-size: 1.5rem; margin-bottom: 0.75rem; display: block; }
+        .prob-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+        .prob-card p { font-size: 0.82rem; color: var(--ink-3); line-height: 1.6; }
+        .bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto auto; gap: 1rem; }
+        .bento-card { background: white; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 1.75rem; transition: all 0.3s; position: relative; overflow: hidden; }
+        .bento-card:hover { border-color: var(--line-2); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+        .bento-card.featured { background: var(--ink); color: white; border-color: var(--ink); grid-column: span 2; }
+        .bento-card.wide { grid-column: span 2; }
+        .bento-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1.25rem; }
+        .bento-icon.blue { background: var(--accent-light); } .bento-icon.green { background: var(--green-light); }
+        .bento-icon.amber { background: var(--amber-light); } .bento-icon.purple { background: #f5f3ff; }
+        .bento-icon.dark { background: rgba(255,255,255,0.1); }
+        .bento-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--ink); }
+        .bento-card.featured h3 { color: white; }
+        .bento-card p { font-size: 0.85rem; color: var(--ink-3); line-height: 1.6; margin-bottom: 1rem; }
+        .bento-card.featured p { color: rgba(255,255,255,0.6); }
+        .bento-feats { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+        .bento-feats li { font-size: 0.8rem; color: var(--ink-3); display: flex; align-items: center; gap: 0.5rem; }
+        .bento-card.featured .bento-feats li { color: rgba(255,255,255,0.7); }
+        .bento-feats li::before { content: '✓'; color: var(--accent); font-weight: 700; font-size: 0.7rem; flex-shrink: 0; }
+        .bento-card.featured .bento-feats li::before { color: #60a5fa; }
+        .agent-tag { position: absolute; top: 1.25rem; right: 1.25rem; background: var(--off); border: 1px solid var(--line); border-radius: 100px; padding: 0.2rem 0.6rem; font-size: 0.65rem; font-weight: 600; color: var(--ink-3); }
+        .bento-card.featured .agent-tag { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); }
+        .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; margin-top: 3rem; }
+        .result-item { background: white; padding: 2.5rem 2rem; text-align: center; transition: background 0.2s; }
+        .result-item:hover { background: var(--off); }
+        .result-number { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 400; color: var(--ink); line-height: 1; margin-bottom: 0.4rem; letter-spacing: -0.03em; }
+        .result-number span { color: var(--accent); }
+        .result-label { font-size: 0.78rem; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+        .result-desc { font-size: 0.82rem; color: var(--ink-3); line-height: 1.6; }
+        .demo-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .demo-window { background: var(--ink); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+        .demo-bar { background: #1a1a1a; padding: 0.875rem 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+        .demo-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .d-red { background: #ff5f57; } .d-yellow { background: #febc2e; } .d-green { background: #28c840; }
+        .demo-title-bar { margin-left: auto; margin-right: auto; font-size: 0.72rem; color: #666; font-family: 'SF Mono', monospace; }
+        .demo-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+        .dmsg { display: flex; flex-direction: column; gap: 0.25rem; }
+        .dmsg-label { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+        .dmsg-label.from { color: #666; } .dmsg-label.atlas { color: #60a5fa; }
+        .dmsg-bubble { padding: 0.75rem 1rem; border-radius: 12px; font-size: 0.82rem; line-height: 1.55; max-width: 88%; }
+        .dmsg-bubble.from { background: #1e1e1e; color: #ccc; border-radius: 4px 12px 12px 12px; }
+        .dmsg-bubble.atlas { background: #1d4ed8; color: white; border-radius: 12px 4px 12px 12px; align-self: flex-end; }
+        .dmsg.right { align-items: flex-end; }
+        .demo-tag { display: flex; align-items: center; gap: 0.4rem; background: rgba(22,163,74,0.15); border: 1px solid rgba(22,163,74,0.25); border-radius: 8px; padding: 0.5rem 0.875rem; margin-top: 0.25rem; }
+        .demo-tag-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; animation: pulse 1.5s ease infinite; }
+        .demo-tag span { font-size: 0.68rem; font-weight: 600; color: #22c55e; letter-spacing: 0.04em; }
+        .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; position: relative; }
+        .steps-grid::before { content: ''; position: absolute; top: 24px; left: calc(16.5% + 12px); right: calc(16.5% + 12px); height: 1px; background: var(--accent); opacity: 0.2; }
+        .step-item { text-align: center; }
+        .step-num { width: 48px; height: 48px; border-radius: 50%; background: var(--accent-light); border: 2px solid var(--accent); color: var(--accent); font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; position: relative; z-index: 1; transition: all 0.3s; }
+        .step-item:hover .step-num { background: var(--accent); color: white; box-shadow: 0 0 0 6px var(--accent-mid); }
+        .step-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
+        .step-item p { font-size: 0.875rem; color: var(--ink-3); line-height: 1.65; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
+        .price-card { background: white; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2.5rem; position: relative; transition: all 0.3s; }
+        .price-card:hover { border-color: var(--line-2); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+        .price-card.highlight { border-color: var(--accent); background: var(--ink); color: white; }
+        .popular-tag { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; font-size: 0.72rem; font-weight: 600; padding: 0.25rem 1rem; border-radius: 100px; white-space: nowrap; letter-spacing: 0.04em; }
+        .plan-name { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin-bottom: 0.75rem; }
+        .price-card.highlight .plan-name { color: rgba(255,255,255,0.5); }
+        .plan-price { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 400; line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.25rem; }
+        .plan-price sup { font-size: 1.5rem; vertical-align: super; font-family: var(--font-sans); font-weight: 400; }
+        .plan-price sub { font-size: 1rem; font-weight: 300; color: var(--ink-3); font-family: var(--font-sans); }
+        .price-card.highlight .plan-price sub { color: rgba(255,255,255,0.4); }
+        .plan-setup { font-size: 0.78rem; color: var(--ink-3); margin-bottom: 1.75rem; }
+        .price-card.highlight .plan-setup { color: rgba(255,255,255,0.4); }
+        .plan-divider { height: 1px; background: var(--line); margin: 1.5rem 0; }
+        .price-card.highlight .plan-divider { background: rgba(255,255,255,0.1); }
+        .plan-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+        .plan-features li { font-size: 0.875rem; color: var(--ink-3); display: flex; align-items: flex-start; gap: 0.6rem; }
+        .price-card.highlight .plan-features li { color: rgba(255,255,255,0.65); }
+        .plan-features li::before { content: '✓'; color: var(--accent); font-weight: 700; font-size: 0.75rem; flex-shrink: 0; margin-top: 0.1rem; }
+        .price-card.highlight .plan-features li::before { color: #60a5fa; }
+        .plan-btn { display: block; text-align: center; padding: 0.875rem; border-radius: 10px; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: all 0.2s; }
+        .plan-btn-dark { background: var(--ink); color: white; }
+        .plan-btn-dark:hover { background: var(--ink-2); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        .plan-btn-white { background: white; color: var(--ink); }
+        .plan-btn-white:hover { background: #f0f4ff; transform: translateY(-1px); }
+        .plan-btn-ghost { background: transparent; color: var(--ink-2); border: 1px solid var(--line-2); }
+        .plan-btn-ghost:hover { border-color: var(--ink-3); background: var(--off); }
+        .cta-section { background: var(--ink); color: white; padding: 6rem 2rem; text-align: center; }
+        .cta-inner { max-width: 640px; margin: 0 auto; }
+        .cta-section .section-title { color: white; }
+        .cta-section .section-title em { color: #60a5fa; }
+        .cta-section p { font-size: 1rem; color: rgba(255,255,255,0.55); margin-bottom: 2.5rem; line-height: 1.7; font-weight: 300; }
+        .btn-cta { background: white; color: var(--ink); text-decoration: none; font-size: 0.95rem; font-weight: 600; padding: 0.875rem 2.5rem; border-radius: 100px; transition: all 0.2s; display: inline-block; }
+        .btn-cta:hover { background: #f0f4ff; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .cta-note { margin-top: 1.25rem; font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+        footer { border-top: 1px solid var(--line); padding: 2.5rem 2rem; background: white; }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+        .footer-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--ink); font-size: 0.9rem; font-weight: 600; }
+        .footer-logo-mark { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; }
+        .footer-links { display: flex; gap: 2rem; list-style: none; }
+        .footer-links a { color: var(--ink-3); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--ink); }
+        .footer-copy { font-size: 0.8rem; color: var(--line-2); }
+        .reveal { opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; }
+        @media (max-width: 1024px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } .bento-card.featured, .bento-card.wide { grid-column: span 1; } .nav-links { display: none; } }
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 1.5rem; }
+            .hero-right { display: none; } .section { padding: 4rem 1.5rem; }
+            .problem-layout, .demo-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .steps-grid, .pricing-grid { grid-template-columns: 1fr; }
+            .steps-grid::before { display: none; }
+            .results-grid { grid-template-columns: 1fr; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+            .btn-nav-ghost { display: none; }
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="/" class="logo">
+        <div class="logo-mark"><svg width="44" height="44" viewBox="200 25 340 220" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="340,30 385,55 385,105 340,130 295,105 295,55" fill="none" stroke="#c8861a" stroke-width="2" opacity="0.85"/>
+  <polygon points="340,126 385,151 385,201 340,226 295,201 295,151" fill="none" stroke="#c8861a" stroke-width="2" opacity="0.85"/>
+  <polygon points="295,78 340,103 340,153 295,178 250,153 250,103" fill="none" stroke="#c8861a" stroke-width="2" opacity="0.85"/>
+  <polygon points="385,78 430,103 430,153 385,178 340,153 340,103" fill="none" stroke="#c8861a" stroke-width="2" opacity="0.85"/>
+  <polygon points="340,82 380,105 380,151 340,174 300,151 300,105" fill="#f5a623" stroke="#c8861a" stroke-width="2"/>
+  <rect x="314" y="108" width="14" height="40" rx="2.5" fill="#0f0f0f"/>
+  <rect x="352" y="108" width="14" height="40" rx="2.5" fill="#0f0f0f"/>
+  <rect x="314" y="123" width="52" height="12" rx="2.5" fill="#0f0f0f"/>
+  <ellipse cx="378" cy="72" rx="12" ry="17" fill="#1a1a2e"/>
+  <rect x="366" y="63" width="24" height="8" rx="4" fill="#f5a623"/>
+  <rect x="366" y="74" width="24" height="7" rx="3.5" fill="#f5a623" opacity="0.75"/>
+  <ellipse cx="360" cy="59" rx="20" ry="9" fill="#7ab8e8" opacity="0.9" transform="rotate(-28,360,59)"/>
+  <ellipse cx="396" cy="59" rx="20" ry="9" fill="#7ab8e8" opacity="0.9" transform="rotate(28,396,59)"/>
+  <polygon points="374,89 382,89 378,98" fill="#1a1a2e"/>
+  <line x1="372" y1="55" x2="366" y2="43" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
+  <line x1="384" y1="55" x2="390" y2="43" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="364" cy="41" r="3.5" fill="#1a1a2e"/>
+  <circle cx="392" cy="41" r="3.5" fill="#1a1a2e"/>
+</svg></div>
+        <span class="logo-text">HiveMind AI</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="#agents">Agents</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#how-it-works">Process</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <div class="nav-right">
+        <a href="/cdn-cgi/l/email-protection#04666b766d77446c6d7261696d6a606563616a677d2a656d" class="btn-nav-ghost">Contact</a>
+        <a href="#contact" class="btn-nav-primary">Book a Demo →</a>
+    </div>
+</nav>
+
+<div style="max-width:1200px;margin:0 auto;">
+<div class="hero">
+    <div class="hero-left">
+        <div class="hero-badge"><div class="badge-dot"></div>Atlas is live and answering customers right now</div>
+        <h1>Never miss a customer<br><em>again.</em></h1>
+        <p class="hero-sub">Atlas by HiveMind AI handles your leads, support, bookings, and social media 24/7 — so you can focus on the work, not the phone.</p>
+        <div class="hero-actions">
+            <a href="#contact" class="btn-primary">Book a Free Demo →</a>
+            <a href="#agents" class="btn-secondary">See How It Works</a>
+        </div>
+        <div class="hero-proof">
+            <div class="proof-avatars">
+                <div class="proof-avatar pa-1">MJ</div>
+                <div class="proof-avatar pa-2">RC</div>
+                <div class="proof-avatar pa-3">DW</div>
+                <div class="proof-avatar pa-4">SB</div>
+            </div>
+            <div><div class="proof-stars">★★★★★</div><div>Trusted by businesses across Minnesota</div></div>
+        </div>
+    </div>
+    <div class="hero-right">
+        <div style="position:relative;padding:1rem 2rem 2rem;">
+            <div class="score-badge">🔥 HOT LEAD · Score 95</div>
+            <div class="phone-mockup">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <div class="sms-header">
+                        <div class="sms-avatar">A</div>
+                        <div><div class="sms-name">Atlas · Redstone Remodeling</div><div class="sms-status">● Online now</div></div>
+                    </div>
+                    <div class="sms-body">
+                        <div class="sms-time">11:47 PM · Sunday</div>
+                        <div class="sms-bubble sms-in">Hi I need a roof replacement, mine is leaking bad. Can you help?</div>
+                        <div class="sms-bubble sms-out">Hey! Yes we do roof replacements. An active leak is urgent — flagged as priority. Can I get your name and address?</div>
+                        <div class="sms-bubble sms-in">John Smith, 123 Main St Plymouth MN</div>
+                        <div class="sms-bubble sms-out">Got it John! Our team will call you Monday. Best number?</div>
+                        <div class="sms-bubble sms-in">763-555-1234 anytime</div>
+                    </div>
+                </div>
+            </div>
+            <div class="alert-card">
+                <div class="alert-tag"><div class="alert-dot"></div>Owner Alert Sent</div>
+                <div class="alert-title">New HOT Lead 🔴</div>
+                <div class="alert-sub">John Smith · Roof replacement<br>Follow up within 2 hours</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="logos-section">
+    <div class="logos-label">Works for any service business</div>
+    <div class="logos-row">
+        <div class="logo-item">Contractors</div>
+        <div class="logo-item">Dental Offices</div>
+        <div class="logo-item">Law Firms</div>
+        <div class="logo-item">Real Estate</div>
+        <div class="logo-item">Insurance</div>
+        <div class="logo-item">Home Services</div>
+    </div>
+</div>
+
+<section class="section section-alt">
+    <div class="container">
+        <div class="problem-layout">
+            <div class="reveal">
+                <div class="section-eyebrow">The Problem</div>
+                <h2 class="section-title">You're losing customers<br>while you <em>sleep</em></h2>
+                <p class="section-lead">Most small business owners are too busy doing the work to handle everything else. Leads go unanswered. Appointments get missed. Social media goes dark.</p>
+                <br>
+                <a href="#agents" class="btn-primary" style="display:inline-flex;">See the solution →</a>
+            </div>
+            <div class="problem-cards reveal reveal-delay-2">
+                <div class="prob-card"><span class="prob-icon">📵</span><h3>Missed Calls</h3><p>62% of customers contact a competitor if you don't respond immediately.</p></div>
+                <div class="prob-card"><span class="prob-icon">🌙</span><h3>After Hours</h3><p>Most leads arrive after 6pm. Competitors who respond faster win.</p></div>
+                <div class="prob-card"><span class="prob-icon">📅</span><h3>Booking Chaos</h3><p>Manual scheduling means double bookings, no-shows, and wasted time.</p></div>
+                <div class="prob-card"><span class="prob-icon">📱</span><h3>No Social Presence</h3><p>You know you should post. But who has the time? Your presence suffers.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="agents">
+    <div class="container">
+        <div class="reveal" style="margin-bottom:3rem;">
+            <div class="section-eyebrow">The Solution</div>
+            <h2 class="section-title">Meet Atlas — your AI<br><em>front office team</em></h2>
+            <p class="section-lead">Four specialized AI agents working together 24/7 to handle every customer interaction automatically.</p>
+        </div>
+        <div class="bento-grid">
+            <div class="bento-card featured reveal reveal-delay-1">
+                <div class="agent-tag">01 · SDR</div>
+                <div class="bento-icon dark">🎯</div>
+                <h3>Lead Qualification</h3>
+                <p>Qualifies every incoming lead instantly — scores them 0–100 and alerts you the moment someone is ready to hire.</p>
+                <ul class="bento-feats">
+                    <li>Captures name, phone, address & project</li>
+                    <li>AI lead scoring 0–100</li>
+                    <li>Instant HOT lead owner alert via SMS</li>
+                    <li>Multilingual — Spanish, Somali + 10 more</li>
+                    <li>Competitor mention detection & flagging</li>
+                </ul>
+            </div>
+            <div class="bento-card reveal reveal-delay-2">
+                <div class="agent-tag">02 · Support</div>
+                <div class="bento-icon blue">🛟</div>
+                <h3>Customer Support</h3>
+                <p>Handles customer issues professionally so small problems don't become big ones.</p>
+                <ul class="bento-feats">
+                    <li>Automatic warranty checker</li>
+                    <li>Escalation & lawyer threat detection</li>
+                    <li>Anger level classification</li>
+                    <li>Instant owner escalation alert</li>
+                </ul>
+            </div>
+            <div class="bento-card reveal reveal-delay-3">
+                <div class="agent-tag">03 · Booking</div>
+                <div class="bento-icon amber">📅</div>
+                <h3>Appointment Booking</h3>
+                <p>Books appointments automatically — no back and forth, no double bookings.</p>
+                <ul class="bento-feats">
+                    <li>Real-time availability management</li>
+                    <li>Double booking prevention</li>
+                    <li>Owner confirmation system</li>
+                    <li>Reschedule & cancellation handling</li>
+                </ul>
+            </div>
+            <div class="bento-card wide reveal reveal-delay-4">
+                <div class="agent-tag">04 · Content</div>
+                <div class="bento-icon purple">📣</div>
+                <h3>Social Media Content</h3>
+                <p>Send one job photo — get four professional posts for Facebook, Instagram, LinkedIn, and Twitter in under 30 seconds. Atlas analyzes photos with AI vision and writes platform-specific content in your brand voice.</p>
+                <ul class="bento-feats">
+                    <li>AI photo analysis and description</li>
+                    <li>Platform-optimized posts for all 4 channels</li>
+                    <li>Hashtag optimization and brand voice consistency</li>
+                    <li>Full week content calendar generation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container">
+        <div class="demo-layout">
+            <div class="reveal">
+                <div class="section-eyebrow">Live Demo</div>
+                <h2 class="section-title">See Atlas handle a<br><em>real conversation</em></h2>
+                <p class="section-lead">A real customer inquiry — captured, qualified, and owner alerted in under 15 seconds. At 11:47pm on a Sunday.</p>
+                <br>
+                <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;">
+                    <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+                        <div style="width:36px;height:36px;background:var(--accent-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">⚡</div>
+                        <div><div style="font-size:0.875rem;font-weight:600;margin-bottom:0.2rem;">Responds in under 15 seconds</div><div style="font-size:0.8rem;color:var(--ink-3);">Every time. Every day. Every industry.</div></div>
+                    </div>
+                    <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+                        <div style="width:36px;height:36px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">🧠</div>
+                        <div><div style="font-size:0.875rem;font-weight:600;margin-bottom:0.2rem;">AI scores every lead 0–100</div><div style="font-size:0.8rem;color:var(--ink-3);">HOT leads get an instant SMS to your phone.</div></div>
+                    </div>
+                    <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+                        <div style="width:36px;height:36px;background:var(--amber-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">📋</div>
+                        <div><div style="font-size:0.875rem;font-weight:600;margin-bottom:0.2rem;">Complete lead summary generated</div><div style="font-size:0.8rem;color:var(--ink-3);">Name, phone, address, issue — all captured automatically.</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="demo-window reveal reveal-delay-2">
+                <div class="demo-bar">
+                    <div class="demo-dot d-red"></div><div class="demo-dot d-yellow"></div><div class="demo-dot d-green"></div>
+                    <div class="demo-title-bar">Atlas · Active Session</div>
+                </div>
+                <div class="demo-body">
+                    <div class="dmsg"><div class="dmsg-label from">Customer · 11:47 PM</div><div class="dmsg-bubble from">Hi I need a roof replacement quote. John Smith, 763-555-1234, 123 Main St Plymouth MN. Leaking bad — need this done in 2 weeks.</div></div>
+                    <div class="dmsg right">
+                        <div class="dmsg-label atlas">Atlas · 11:47 PM</div>
+                        <div class="dmsg-bubble atlas">Hey John — an active leak is urgent. I've captured your info and flagged this as priority. Someone will call you first thing Monday. Anything else about the damage?</div>
+                        <div class="demo-tag"><div class="demo-tag-dot"></div><span>HOT LEAD · Score 95 · Owner alerted via SMS</span></div>
+                    </div>
+                    <div class="dmsg"><div class="dmsg-label from">Customer · 11:48 PM</div><div class="dmsg-bubble from">No that's all thanks</div></div>
+                    <div class="dmsg right"><div class="dmsg-label atlas">Atlas · 11:48 PM</div><div class="dmsg-bubble atlas">You're all set John. Expect a call Monday morning. Have a good night!</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="results">
+    <div class="container">
+        <div style="text-align:center;max-width:600px;margin:0 auto;" class="reveal">
+            <div class="section-eyebrow">Atlas by the Numbers</div>
+            <h2 class="section-title">Real capabilities.<br><em>Measurable results.</em></h2>
+            <p class="section-lead" style="margin:0 auto;">No fabricated reviews. Just what Atlas actually does — verified and consistent across every deployment.</p>
+        </div>
+        <div class="results-grid reveal reveal-delay-1">
+            <div class="result-item"><div class="result-number"><span>&lt;</span>15<span>s</span></div><div class="result-label">Average Response Time</div><p class="result-desc">Atlas responds to every message in under 15 seconds — 24 hours a day, 7 days a week, including holidays.</p></div>
+            <div class="result-item"><div class="result-number">100<span>%</span></div><div class="result-label">Leads Captured</div><p class="result-desc">Every inquiry gets captured with full contact details — name, phone, address, and project description.</p></div>
+            <div class="result-item"><div class="result-number"><span>0</span></div><div class="result-label">Missed After-Hours Leads</div><p class="result-desc">A customer texting at 2am on Sunday gets an immediate professional response. Every time.</p></div>
+            <div class="result-item"><div class="result-number">10<span>+</span></div><div class="result-label">Languages Supported</div><p class="result-desc">Atlas auto-detects the customer's language and responds in kind. Spanish, Somali, French, and more.</p></div>
+            <div class="result-item"><div class="result-number">4</div><div class="result-label">Platforms Per Photo</div><p class="result-desc">Send one job photo. Get ready-to-post content for Facebook, Instagram, LinkedIn, and Twitter.</p></div>
+            <div class="result-item"><div class="result-number">64</div><div class="result-label">QA Tests Passed</div><p class="result-desc">Tested against 64 automated scenarios before every deployment — edge cases, attacks, and more.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" id="how-it-works">
+    <div class="container">
+        <div style="text-align:center;max-width:600px;margin:0 auto;" class="reveal">
+            <div class="section-eyebrow">Process</div>
+            <h2 class="section-title">Up and running in<br><em>under 2 hours</em></h2>
+            <p class="section-lead" style="margin:0 auto;">We handle the entire setup. You just answer questions about your business. No tech knowledge required.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-item reveal reveal-delay-1"><div class="step-num">1</div><h3>Discovery Call</h3><p>45 minutes learning your business — services, pricing, tone, and how you work with customers.</p></div>
+            <div class="step-item reveal reveal-delay-2"><div class="step-num">2</div><h3>Custom Setup</h3><p>We configure Atlas specifically for your business. Your name, your services, your voice. Fully tailored.</p></div>
+            <div class="step-item reveal reveal-delay-3"><div class="step-num">3</div><h3>Go Live</h3><p>We connect your existing phone number. Atlas starts handling customers immediately. Nothing changes for them.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="pricing">
+    <div class="container">
+        <div style="text-align:center;max-width:600px;margin:0 auto;" class="reveal">
+            <div class="section-eyebrow">Pricing</div>
+            <h2 class="section-title">Simple, transparent<br><em>pricing</em></h2>
+            <p class="section-lead" style="margin:0 auto;">No long term contracts. Cancel anytime. Setup fee covers full custom configuration for your business.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card reveal reveal-delay-1">
+                <div class="plan-name">Starter</div>
+                <div class="plan-price"><sup>$</sup>800<sub>/mo</sub></div>
+                <div class="plan-setup">+ $1,200 one-time setup fee</div>
+                <div class="plan-divider"></div>
+                <ul class="plan-features">
+                    <li>1 AI Agent of your choice</li><li>SMS integration</li><li>Lead summaries & owner alerts</li>
+                    <li>24/7 coverage</li><li>Monthly performance report</li><li>Email support</li>
+                </ul>
+                <a href="#contact" class="plan-btn plan-btn-ghost">Get Started</a>
+            </div>
+            <div class="price-card highlight reveal reveal-delay-2">
+                <div class="popular-tag">Most Popular</div>
+                <div class="plan-name">Growth</div>
+                <div class="plan-price"><sup>$</sup>1,800<sub>/mo</sub></div>
+                <div class="plan-setup">+ $2,500 one-time setup fee</div>
+                <div class="plan-divider"></div>
+                <ul class="plan-features">
+                    <li>All 4 AI Agents</li><li>SMS + CRM integration</li><li>Full lead management</li>
+                    <li>Booking automation</li><li>Social media content</li><li>Priority owner alerts</li>
+                    <li>Weekly performance report</li><li>Dedicated support</li>
+                </ul>
+                <a href="#contact" class="plan-btn plan-btn-white">Get Started</a>
+            </div>
+            <div class="price-card reveal reveal-delay-3">
+                <div class="plan-name">Premium</div>
+                <div class="plan-price"><sup>$</sup>3,500<sub>/mo</sub></div>
+                <div class="plan-setup">+ $5,000 one-time setup fee</div>
+                <div class="plan-divider"></div>
+                <ul class="plan-features">
+                    <li>Everything in Growth</li><li>Custom AI workflows</li><li>Multi-location support</li>
+                    <li>API integrations</li><li>Custom reporting dashboard</li>
+                    <li>Dedicated account manager</li><li>SLA guarantee</li>
+                </ul>
+                <a href="#contact" class="plan-btn plan-btn-ghost">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section" id="contact">
+    <div class="cta-inner reveal">
+        <div class="section-eyebrow" style="color:rgba(255,255,255,0.4);justify-content:center;display:flex;">Get Started</div>
+        <h2 class="section-title" style="font-size:clamp(2.2rem,4vw,3.5rem);margin-bottom:1rem;">Ready to put your front office<br><em>on autopilot?</em></h2>
+        <p>Book a free 30 minute demo. We'll show you Atlas live with your business name on it. No commitment required.</p>
+        <a href="/cdn-cgi/l/email-protection#ed8f829f849ead85849b88808483898c8a88838e94c38c84" class="btn-cta">Book Your Free Demo →</a>
+        <div class="cta-note">No contracts · No commitments · Just results</div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <a href="/" class="footer-logo"><div class="footer-logo-mark"><svg width="32" height="32" viewBox="200 25 340 220" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="340,30 385,55 385,105 340,130 295,105 295,55" fill="none" stroke="#c8861a" stroke-width="2" opacity="0.85"/>
+  <polygon points="340,126 385,151 385,201 340,226 295,201 295,151" fill="none" stroke="#c8861a" stroke-width="2" opacity="0.85"/>
+  <polygon points="295,78 340,103 340,153 295,178 250,153 250,103" fill="none" stroke="#c8861a" stroke-width="2" opacity="0.85"/>
+  <polygon points="385,78 430,103 430,153 385,178 340,153 340,103" fill="none" stroke="#c8861a" stroke-width="2" opacity="0.85"/>
+  <polygon points="340,82 380,105 380,151 340,174 300,151 300,105" fill="#f5a623" stroke="#c8861a" stroke-width="2"/>
+  <rect x="314" y="108" width="14" height="40" rx="2.5" fill="#0f0f0f"/>
+  <rect x="352" y="108" width="14" height="40" rx="2.5" fill="#0f0f0f"/>
+  <rect x="314" y="123" width="52" height="12" rx="2.5" fill="#0f0f0f"/>
+  <ellipse cx="378" cy="72" rx="12" ry="17" fill="#1a1a2e"/>
+  <rect x="366" y="63" width="24" height="8" rx="4" fill="#f5a623"/>
+  <rect x="366" y="74" width="24" height="7" rx="3.5" fill="#f5a623" opacity="0.75"/>
+  <ellipse cx="360" cy="59" rx="20" ry="9" fill="#7ab8e8" opacity="0.9" transform="rotate(-28,360,59)"/>
+  <ellipse cx="396" cy="59" rx="20" ry="9" fill="#7ab8e8" opacity="0.9" transform="rotate(28,396,59)"/>
+  <polygon points="374,89 382,89 378,98" fill="#1a1a2e"/>
+  <line x1="372" y1="55" x2="366" y2="43" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
+  <line x1="384" y1="55" x2="390" y2="43" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="364" cy="41" r="3.5" fill="#1a1a2e"/>
+  <circle cx="392" cy="41" r="3.5" fill="#1a1a2e"/>
+</svg></div>HiveMind AI</a>
+        <ul class="footer-links">
+            <li><a href="#agents">Agents</a></li><li><a href="#pricing">Pricing</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="/cdn-cgi/l/email-protection#22404d504b51624a4b54474f4b4c464345474c415b0c434b">Contact</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 HiveMind AI LLC. All rights reserved.</p>
+    </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e)
