@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — HiveMind AI LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0d0d0d;
+      --ink-muted: #555;
+      --ink-faint: #999;
+      --paper: #faf9f6;
+      --accent: #1a3a2a;
+      --accent-light: #e8f0eb;
+      --rule: #e0ddd6;
+      --max: 720px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.75;
+      padding: 0 24px;
+    }
+
+    header {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 64px 0 40px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      font-family: 'DM Serif Display', serif;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--ink-faint);
+      letter-spacing: 0.04em;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 48px 0 96px;
+    }
+
+    .intro {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .intro p {
+      font-size: 15px;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    section {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    h2 .num {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      margin: 20px 0 8px;
+      letter-spacing: 0.02em;
+    }
+
+    p { margin-bottom: 14px; color: var(--ink); }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 10px 0 14px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    ul li {
+      padding: 6px 0 6px 20px;
+      position: relative;
+      color: var(--ink);
+    }
+
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--ink-faint);
+      font-weight: 300;
+    }
+
+    .highlight-box {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      line-height: 1.8;
+    }
+
+    .highlight-box strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 6px;
+    }
+
+    .warning-box {
+      border: 1px solid #c8b89a;
+      background: #fdf7ef;
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+
+    .warning-box p {
+      font-size: 14px;
+      color: #6b4c1e;
+      margin: 0;
+    }
+
+    .caps {
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 32px 0 48px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--ink-faint);
+      margin: 0;
+    }
+
+    footer a { font-size: 13px; }
+
+    @media (max-width: 600px) {
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="wordmark">HiveMind AI LLC — Atlas</span>
+  <h1>Terms of Service</h1>
+  <p class="meta">Effective date: April 6, 2026 &nbsp;·&nbsp; Last updated: April 6, 2026</p>
+</header>
+
+<main>
+
+  <div class="intro">
+    <p>These Terms of Service ("Terms") govern your access to and use of the Atlas front office AI platform operated by HiveMind AI LLC. By creating an account or using Atlas, you agree to be bound by these Terms. Please read them carefully.</p>
+  </div>
+
+  <section>
+    <h2><span class="num">01</span> About Atlas</h2>
+    <p>Atlas is a front office AI system that provides small and medium-sized businesses ("Clients") with four automated AI agents — SDR, Support, Booking, and Content — that communicate with their customers via SMS. Atlas is operated by HiveMind AI LLC, a Minnesota limited liability company.</p>
+    <div class="highlight-box">
+      <strong>HiveMind AI LLC</strong>
+      11883 85th Pl N, Maple Grove, MN 55369<br>
+      <a href="mailto:boris@hivemindagency.ai">boris@hivemindagency.ai</a><br>
+      <a href="https://hivemindagency.ai">hivemindagency.ai</a>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span> Eligibility &amp; Account Registration</h2>
+    <p>To use Atlas, you must:</p>
+    <ul>
+      <li>Be a legal business entity or individual operating a lawful business</li>
+      <li>Be at least 18 years of age</li>
+      <li>Have authority to enter into a binding agreement on behalf of your business</li>
+      <li>Provide accurate and complete registration information</li>
+    </ul>
+    <p>You are responsible for maintaining the confidentiality of your account credentials and for all activity under your account.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span> The Atlas Agents</h2>
+    <p>Your subscription grants you access to one or more of the following AI agents, as specified in your plan:</p>
+
+    <h3>SDR Agent</h3>
+    <p>Handles outbound lead engagement and qualification via SMS on behalf of your business.</p>
+
+    <h3>Support Agent</h3>
+    <p>Responds to inbound customer service inquiries via SMS using information you provide about your business.</p>
+
+    <h3>Booking Agent</h3>
+    <p>Manages appointment scheduling, confirmations, and reminders via SMS integrated with your calendar system.</p>
+
+    <h3>Content Agent</h3>
+    <p>Sends promotional or informational SMS campaigns to opted-in customers on your behalf.</p>
+
+    <p>Agent behavior is governed by the configuration and business information you provide. You are responsible for the accuracy of that information and for ensuring agent outputs comply with applicable laws.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span> SMS Messaging &amp; TCPA Compliance</h2>
+    <p>Atlas sends SMS messages on your behalf using Twilio's messaging infrastructure. By using Atlas, you represent and warrant that:</p>
+    <ul>
+      <li>All end users who receive SMS messages via Atlas have provided prior express written consent in compliance with the Telephone Consumer Protection Act (TCPA) and applicable FCC regulations</li>
+      <li>Opt-in records are collected via GoHighLevel web forms that clearly disclose the nature, frequency, and opt-out method of messages</li>
+      <li>You will honor all STOP requests immediately and not re-message opted-out contacts</li>
+      <li>Your use of Atlas complies with all applicable federal, state, and local laws governing electronic communications and marketing</li>
+      <li>You will not use Atlas to send unsolicited messages, spam, or messages to purchased contact lists</li>
+    </ul>
+    <div class="warning-box">
+      <p><strong>Important:</strong> You, as the Client, are the responsible party for TCPA compliance with respect to your end users. HiveMind AI LLC provides the technology platform and is not responsible for non-compliant use of Atlas by Clients. TCPA violations can result in significant statutory damages. Consult legal counsel if you have questions about your compliance obligations.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span> Billing &amp; Payment</h2>
+    <p>Atlas subscriptions are billed through GoHighLevel's integrated payment platform ("Stripe via GoHighLevel"). By subscribing, you authorize HiveMind AI LLC to charge your payment method on a recurring basis according to your selected plan.</p>
+    <h3>Billing terms</h3>
+    <ul>
+      <li>Subscriptions are billed monthly or annually in advance, as selected at checkout</li>
+      <li>All fees are in U.S. dollars and are non-refundable except as described below</li>
+      <li>We reserve the right to adjust pricing with 30 days' written notice to active subscribers</li>
+      <li>Failed payments may result in temporary suspension of your account</li>
+    </ul>
+    <h3>Cancellation &amp; refunds</h3>
+    <ul>
+      <li>You may cancel your subscription at any time from your account settings; cancellation takes effect at the end of the current billing period</li>
+      <li>We do not provide prorated refunds for mid-period cancellations</li>
+      <li>If you believe you were charged in error, contact us within 30 days of the charge</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span> Acceptable Use</h2>
+    <p>You agree not to use Atlas to:</p>
+    <ul>
+      <li>Send unsolicited messages or spam to any individual</li>
+      <li>Violate any applicable law, including the TCPA, CAN-SPAM Act, or state marketing laws</li>
+      <li>Impersonate any person or entity, or misrepresent your affiliation with any business</li>
+      <li>Harass, abuse, threaten, or harm any individual</li>
+      <li>Send content that is illegal, defamatory, obscene, or fraudulent</li>
+      <li>Attempt to reverse-engineer, circumvent, or tamper with the Atlas platform</li>
+      <li>Resell or sublicense Atlas without written permission from HiveMind AI LLC</li>
+    </ul>
+    <p>We reserve the right to suspend or terminate accounts that violate these terms without notice or refund.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span> AI-Generated Content</h2>
+    <p>Atlas uses large language models to generate SMS responses on your behalf. You acknowledge that:</p>
+    <ul>
+      <li>AI-generated content may occasionally be inaccurate, incomplete, or inappropriate</li>
+      <li>You are responsible for reviewing and approving agent configurations before deploying them to customers</li>
+      <li>HiveMind AI LLC does not guarantee the accuracy, completeness, or fitness of any AI-generated message</li>
+      <li>You retain full responsibility for all communications sent to your customers through Atlas</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">08</span> Intellectual Property</h2>
+    <p>HiveMind AI LLC retains all intellectual property rights in the Atlas platform, including its software, models, interfaces, and branding. These Terms do not grant you any ownership rights in Atlas.</p>
+    <p>You retain ownership of your business data and customer data that you bring to the platform. By using Atlas, you grant HiveMind AI LLC a limited license to process your data solely to provide the service, and to use anonymized, aggregated data to improve Atlas.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">09</span> Confidentiality</h2>
+    <p>Both parties agree to keep confidential any non-public information disclosed in connection with this agreement, including pricing, technical configurations, and customer data. This obligation survives termination of the subscription.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">10</span> Disclaimers</h2>
+    <div class="warning-box">
+      <p class="caps">ATLAS IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. HIVEMIND AI LLC DOES NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR THAT AI-GENERATED CONTENT WILL MEET YOUR REQUIREMENTS.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">11</span> Limitation of Liability</h2>
+    <div class="warning-box">
+      <p class="caps">TO THE MAXIMUM EXTENT PERMITTED BY LAW, HIVEMIND AI LLC'S TOTAL LIABILITY TO YOU FOR ANY CLAIMS ARISING OUT OF OR RELATING TO THESE TERMS OR THE USE OF ATLAS SHALL NOT EXCEED THE AMOUNTS PAID BY YOU TO HIVEMIND AI LLC IN THE THREE (3) MONTHS PRECEDING THE CLAIM. IN NO EVENT SHALL HIVEMIND AI LLC BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING LOSS OF PROFITS, DATA, OR GOODWILL.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">12</span> Indemnification</h2>
+    <p>You agree to indemnify, defend, and hold harmless HiveMind AI LLC and its officers, employees, and agents from any claims, damages, losses, or expenses (including reasonable attorneys' fees) arising from: (a) your use of Atlas; (b) your violation of these Terms; (c) your violation of any third-party rights or applicable law, including the TCPA; or (d) any content or communications sent through Atlas on your behalf.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">13</span> Governing Law &amp; Disputes</h2>
+    <p>These Terms are governed by the laws of the State of Minnesota, without regard to conflict-of-law principles. Any dispute arising under these Terms shall be resolved exclusively in the state or federal courts located in Hennepin County, Minnesota, and you consent to personal jurisdiction in those courts.</p>
+    <p>Before filing any claim, both parties agree to attempt in good faith to resolve the dispute informally within 30 days by providing written notice of the dispute.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">14</span> Termination</h2>
+    <p>Either party may terminate these Terms at any time. HiveMind AI LLC may suspend or terminate your access immediately for violation of these Terms, non-payment, or conduct that could expose us or our users to harm or liability. Upon termination, your right to use Atlas ceases immediately, and we will delete or return your data per our Privacy Policy.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">15</span> Modifications to Terms</h2>
+    <p>We may update these Terms from time to time. We will post updated Terms on this page with a revised effective date. For material changes, we will provide at least 14 days' notice to active subscribers via email. Your continued use of Atlas after that notice period constitutes acceptance of the revised Terms.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">16</span> Contact</h2>
+    <p>Questions about these Terms of Service should be directed to:</p>
+    <div class="highlight-box">
+      <strong>Legal Contact</strong>
+      HiveMind AI LLC<br>
+      11883 85th Pl N, Maple Grove, MN 55369<br>
+      <a href="mailto:boris@hivemindagency.ai">boris@hivemindagency.ai</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 HiveMind AI LLC. All rights reserved.</p>
+  <a href="privacy.html">← Privacy Policy</a>
+</footer>
+
+</body>
+</html>
