@@ -468,7 +468,37 @@
         <div class="steps-grid">
             <div class="step-item reveal reveal-delay-1"><div class="step-num">1</div><h3>Discovery Call</h3><p>45 minutes learning your business — services, pricing, tone, and how you work with customers.</p></div>
             <div class="step-item reveal reveal-delay-2"><div class="step-num">2</div><h3>Custom Setup</h3><p>We configure Atlas specifically for your business. Your name, your services, your voice. Fully tailored.</p></div>
-            <div class="step-item reveal reveal-delay-3"><div class="step-num">3</div><h3>Go Live</h3><p>We connect your existing phone number. Atlas starts handling customers immediately. Nothing changes for them.</p></div>
+            <div class="step-item reveal reveal-delay-3"><div class="step-num">3</div><h3>Go Live</h3><p>We text-enable your existing number — landline or cell. Calls work exactly as before. Atlas handles all texts automatically. Your customers notice nothing different.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="your-number">
+    <div class="container">
+        <div style="text-align:center;max-width:640px;margin:0 auto 3rem;" class="reveal">
+            <div class="section-eyebrow">Zero Disruption</div>
+            <h2 class="section-title">Keep your number.<br><em>Keep your customers.</em></h2>
+            <p class="section-lead" style="margin:0 auto;">No new numbers to advertise. No confusion for your customers. Atlas works with your existing phone number — we just add texting to it.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:900px;margin:0 auto;">
+            <div style="background:var(--off);border:1px solid var(--line);border-radius:var(--radius);padding:2rem;">
+                <div style="font-size:1.5rem;margin-bottom:1rem;">🏢</div>
+                <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:400;margin-bottom:0.75rem;">Landline numbers</h3>
+                <p style="color:var(--ink-3);font-size:0.9rem;line-height:1.7;">We text-enable your existing landline. Your patients and customers can now text the same number they call. Voice calls continue working exactly as before — nothing changes on your end.</p>
+            </div>
+            <div style="background:var(--off);border:1px solid var(--line);border-radius:var(--radius);padding:2rem;">
+                <div style="font-size:1.5rem;margin-bottom:1rem;">📱</div>
+                <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:400;margin-bottom:0.75rem;">Cell phone numbers</h3>
+                <p style="color:var(--ink-3);font-size:0.9rem;line-height:1.7;">We host your business cell number so texts are handled by Atlas while calls still ring your phone. Your number stays yours — we just add a 24/7 AI layer to handle the texts.</p>
+            </div>
+            <div style="background:var(--off);border:1px solid var(--line);border-radius:var(--radius);padding:2rem;">
+                <div style="font-size:1.5rem;margin-bottom:1rem;">⚡</div>
+                <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:400;margin-bottom:0.75rem;">Same-day activation</h3>
+                <p style="color:var(--ink-3);font-size:0.9rem;line-height:1.7;">Setup takes under 2 hours. Your customers start getting instant responses the same day. No downtime, no transition period, no learning curve for your team.</p>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:2.5rem;padding:1.5rem;background:var(--accent-light);border-radius:var(--radius);max-width:600px;margin:2.5rem auto 0;">
+            <p style="color:var(--accent);font-size:0.95rem;font-weight:500;">Your customers text the number they already know. Atlas answers in under 15 seconds. You get notified of every lead, booking, and issue — automatically.</p>
         </div>
     </div>
 </section>
@@ -603,5 +633,242 @@
         if (e.target === this) closeBooking();
     });
 </script>
+
+<!-- Atlas Chat Widget -->
+<style>
+#atlas-chat-bubble {
+    position: fixed; bottom: 28px; right: 28px; z-index: 9998;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #0f0f0f; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+#atlas-chat-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(0,0,0,0.3); }
+#atlas-chat-bubble svg { width: 24px; height: 24px; }
+#atlas-chat-badge {
+    position: absolute; top: -2px; right: -2px;
+    width: 14px; height: 14px; background: #16a34a;
+    border-radius: 50%; border: 2px solid white;
+    animation: pulse-badge 2s ease infinite;
+}
+@keyframes pulse-badge { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.7;transform:scale(0.85)} }
+#atlas-chat-window {
+    position: fixed; bottom: 96px; right: 28px; z-index: 9997;
+    width: 360px; height: 520px; border-radius: 16px;
+    background: white; box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    display: none; flex-direction: column; overflow: hidden;
+    border: 1px solid #e8e8e4;
+    animation: slideUp 0.25s ease;
+}
+@keyframes slideUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+#atlas-chat-header {
+    background: #0f0f0f; padding: 16px 20px;
+    display: flex; align-items: center; gap: 12px;
+    justify-content: space-between;
+}
+.atlas-header-left { display: flex; align-items: center; gap: 10px; }
+.atlas-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: #2a2a2a; display: flex; align-items: center;
+    justify-content: center; font-size: 14px; color: white; font-weight: 600;
+}
+.atlas-header-info { display: flex; flex-direction: column; }
+.atlas-header-name { color: white; font-size: 14px; font-weight: 500; }
+.atlas-header-status { color: #16a34a; font-size: 11px; font-weight: 500; }
+#atlas-chat-close {
+    background: none; border: none; color: rgba(255,255,255,0.6);
+    cursor: pointer; font-size: 18px; padding: 0; line-height: 1;
+}
+#atlas-chat-close:hover { color: white; }
+#atlas-chat-messages {
+    flex: 1; overflow-y: auto; padding: 16px;
+    display: flex; flex-direction: column; gap: 10px;
+    background: #fafaf8;
+}
+#atlas-chat-messages::-webkit-scrollbar { width: 4px; }
+#atlas-chat-messages::-webkit-scrollbar-track { background: transparent; }
+#atlas-chat-messages::-webkit-scrollbar-thumb { background: #d4d4cc; border-radius: 2px; }
+.atlas-msg { display: flex; flex-direction: column; max-width: 82%; }
+.atlas-msg.atlas { align-self: flex-start; }
+.atlas-msg.user { align-self: flex-end; }
+.atlas-msg-bubble {
+    padding: 10px 14px; border-radius: 14px;
+    font-size: 13.5px; line-height: 1.55; font-family: var(--font-sans);
+}
+.atlas-msg.atlas .atlas-msg-bubble {
+    background: white; color: #0f0f0f;
+    border: 1px solid #e8e8e4; border-radius: 4px 14px 14px 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.atlas-msg.user .atlas-msg-bubble {
+    background: #0f0f0f; color: white;
+    border-radius: 14px 4px 14px 14px;
+}
+.atlas-msg-time {
+    font-size: 10px; color: #999; margin-top: 3px;
+    padding: 0 4px;
+}
+.atlas-msg.user .atlas-msg-time { text-align: right; }
+.atlas-typing {
+    display: flex; align-items: center; gap: 4px;
+    padding: 10px 14px; background: white;
+    border: 1px solid #e8e8e4; border-radius: 4px 14px 14px 14px;
+    width: fit-content; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.atlas-typing span {
+    width: 6px; height: 6px; background: #888;
+    border-radius: 50%; animation: typing-dot 1.2s ease infinite;
+}
+.atlas-typing span:nth-child(2) { animation-delay: 0.2s; }
+.atlas-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing-dot { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-4px)} }
+#atlas-chat-footer {
+    padding: 12px 16px; background: white;
+    border-top: 1px solid #e8e8e4;
+    display: flex; gap: 8px; align-items: center;
+}
+#atlas-chat-input {
+    flex: 1; border: 1px solid #e8e8e4; border-radius: 20px;
+    padding: 9px 14px; font-size: 13.5px; font-family: var(--font-sans);
+    outline: none; resize: none; background: #fafaf8;
+    transition: border-color 0.2s;
+}
+#atlas-chat-input:focus { border-color: #0f0f0f; background: white; }
+#atlas-chat-send {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: #0f0f0f; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; flex-shrink: 0;
+}
+#atlas-chat-send:hover { background: #2a2a2a; }
+#atlas-chat-send svg { width: 16px; height: 16px; }
+.atlas-chat-intro {
+    text-align: center; padding: 8px 0 4px;
+    font-size: 11px; color: #999;
+}
+@media (max-width: 480px) {
+    #atlas-chat-window { width: calc(100vw - 32px); right: 16px; bottom: 88px; }
+    #atlas-chat-bubble { right: 16px; bottom: 16px; }
+}
+</style>
+
+<!-- Chat Bubble -->
+<div id="atlas-chat-bubble" onclick="toggleAtlasChat()">
+    <div id="atlas-chat-badge"></div>
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+</div>
+
+<!-- Chat Window -->
+<div id="atlas-chat-window">
+    <div id="atlas-chat-header">
+        <div class="atlas-header-left">
+            <div class="atlas-avatar">A</div>
+            <div class="atlas-header-info">
+                <span class="atlas-header-name">Atlas by HiveMind AI</span>
+                <span class="atlas-header-status">● Online now</span>
+            </div>
+        </div>
+        <button id="atlas-chat-close" onclick="toggleAtlasChat()">✕</button>
+    </div>
+    <div id="atlas-chat-messages">
+        <div class="atlas-chat-intro">Atlas AI · Typically replies instantly</div>
+    </div>
+    <div id="atlas-chat-footer">
+        <input id="atlas-chat-input" type="text" placeholder="Ask me anything..." 
+               onkeydown="if(event.key==='Enter')sendAtlasMessage()">
+        <button id="atlas-chat-send" onclick="sendAtlasMessage()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<script>
+const ATLAS_API = 'https://api.hivemindagency.ai';
+let atlasSessionId = 'web_' + Math.random().toString(36).substr(2, 9);
+let atlasChatOpen = false;
+let atlasGreeted = false;
+
+function toggleAtlasChat() {
+    atlasChatOpen = !atlasChatOpen;
+    const win = document.getElementById('atlas-chat-window');
+    win.style.display = atlasChatOpen ? 'flex' : 'none';
+    if (atlasChatOpen && !atlasGreeted) {
+        atlasGreeted = true;
+        setTimeout(() => {
+            showTyping();
+            setTimeout(() => {
+                removeTyping();
+                addAtlasMessage("Hi! I'm Atlas, HiveMind AI's front office assistant. I can answer questions about Atlas, show you how it works, or help you book a free demo. What would you like to know?");
+            }, 1200);
+        }, 400);
+        document.getElementById('atlas-chat-input').focus();
+    }
+}
+
+function addAtlasMessage(text) {
+    const msgs = document.getElementById('atlas-chat-messages');
+    const now = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    const div = document.createElement('div');
+    div.className = 'atlas-msg atlas';
+    div.innerHTML = `<div class="atlas-msg-bubble">${text}</div><div class="atlas-msg-time">${now}</div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+}
+
+function addUserMessage(text) {
+    const msgs = document.getElementById('atlas-chat-messages');
+    const now = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    const div = document.createElement('div');
+    div.className = 'atlas-msg user';
+    div.innerHTML = `<div class="atlas-msg-bubble">${text}</div><div class="atlas-msg-time">${now}</div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showTyping() {
+    const msgs = document.getElementById('atlas-chat-messages');
+    const div = document.createElement('div');
+    div.id = 'atlas-typing';
+    div.className = 'atlas-msg atlas';
+    div.innerHTML = '<div class="atlas-typing"><span></span><span></span><span></span></div>';
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() {
+    const t = document.getElementById('atlas-typing');
+    if (t) t.remove();
+}
+
+async function sendAtlasMessage() {
+    const input = document.getElementById('atlas-chat-input');
+    const message = input.value.trim();
+    if (!message) return;
+
+    input.value = '';
+    addUserMessage(message);
+    showTyping();
+
+    try {
+        const response = await fetch(`${ATLAS_API}/chat`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message, session_id: atlasSessionId })
+        });
+        const data = await response.json();
+        removeTyping();
+        addAtlasMessage(data.reply || "I'm here to help! What would you like to know about Atlas?");
+    } catch (err) {
+        removeTyping();
+        addAtlasMessage("I'm having a moment — please try again or email us at boris@hivemindagency.ai");
+    }
+}
+</script>
+
 </body>
 </html>
