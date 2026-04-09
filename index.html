@@ -815,7 +815,7 @@ function addAtlasMessage(text) {
     const now = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
     const div = document.createElement('div');
     div.className = 'atlas-msg atlas';
-    div.innerHTML = `<div class="atlas-msg-bubble">${text}</div><div class="atlas-msg-time">${now}</div>`;
+    div.innerHTML = `<div class="atlas-msg-bubble">${text.replace(/\n/g, '<br>')}</div><div class="atlas-msg-time">${now}</div>`;
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
 }
