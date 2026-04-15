@@ -191,7 +191,7 @@
         .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; }
-        @media (max-width: 1024px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } .bento-card.featured, .bento-card.wide { grid-column: span 1; } .nav-links { display: none; } }
+        @media (max-width: 1024px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } .bento-card.featured, .bento-card.wide { grid-column: span 1; } .bento-card[style*="span 4"] { grid-column: span 2 !important; } .nav-links { display: none; } }
         @media (max-width: 768px) {
             .hero { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 1.5rem; }
             .hero-right { display: none; } .section { padding: 4rem 1.5rem; }
@@ -200,6 +200,7 @@
             .steps-grid::before { display: none; }
             .results-grid { grid-template-columns: 1fr; }
             .bento-grid { grid-template-columns: 1fr; }
+            .bento-card[style*="span 4"] { grid-column: span 1 !important; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-links { justify-content: center; }
             .btn-nav-ghost { display: none; }
@@ -239,19 +240,19 @@
     </ul>
     <div class="nav-right">
         <a href="mailto:boris@hivemindagency.ai" class="btn-nav-ghost">Contact</a>
-        <a href="#" onclick="openBooking(event)" class="btn-nav-primary">Book a Demo →</a>
+        <a href="#" onclick="openBooking(event)" class="btn-nav-primary">Book a Demo &rarr;</a>
     </div>
 </nav>
 
 <div style="max-width:1200px;margin:0 auto;">
 <div class="hero">
     <div class="hero-left">
-        <div class="hero-badge"><div class="badge-dot"></div>Atlas is live and answering customers right now</div>
+        <div class="hero-badge"><div class="badge-dot"></div>Atlas Voice AI is live &mdash; answering calls &amp; texts 24/7</div>
         <h1>Never miss a customer<br><em>again.</em></h1>
-        <p class="hero-sub">Atlas by HiveMind AI handles your leads, support, bookings, and social media 24/7 — so you can focus on the work, not the phone.</p>
+        <p class="hero-sub">Atlas by HiveMind AI answers your calls in under a second, handles texts 24/7, qualifies leads, books appointments, and creates social content &mdash; so you never miss a customer again.</p>
         <div class="hero-actions">
-            <a href="#" onclick="openBooking(event)" class="btn-primary">Book a Free Demo →</a>
-            <a href="#agents" class="btn-secondary">See How It Works</a>
+            <a href="#" onclick="openBooking(event)" class="btn-primary">Book a Free Demo &rarr;</a>
+            <a href="#agents" class="btn-secondary">See Voice Demo</a>
         </div>
         <div class="hero-proof">
             <div class="proof-avatars">
@@ -260,23 +261,23 @@
                 <div class="proof-avatar pa-3">DW</div>
                 <div class="proof-avatar pa-4">SB</div>
             </div>
-            <div><div class="proof-stars">★★★★★</div><div>Trusted by businesses across Minnesota</div></div>
+            <div><div class="proof-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div>64/64 scenarios tested &middot; Live in production</div></div>
         </div>
     </div>
     <div class="hero-right">
         <div style="position:relative;padding:1rem 2rem 2rem;">
-            <div class="score-badge">🔥 HOT LEAD · Score 98</div>
+            <div class="score-badge">&#128293; HOT LEAD &middot; Score 98</div>
             <div class="phone-mockup">
                 <div class="phone-notch"></div>
                 <div class="phone-screen">
                     <div class="sms-header">
                         <div class="sms-avatar">A</div>
-                        <div><div class="sms-name">Atlas · Northstar HVAC</div><div class="sms-status">● Online now</div></div>
+                        <div><div class="sms-name">Atlas &middot; Northstar HVAC</div><div class="sms-status">&#9679; Online now</div></div>
                     </div>
                     <div class="sms-body">
-                        <div class="sms-time">9:23 PM · Wednesday</div>
+                        <div class="sms-time">9:23 PM &middot; Wednesday</div>
                         <div class="sms-bubble sms-in">Hey my furnace stopped working, house is getting cold. You guys available tonight?</div>
-                        <div class="sms-bubble sms-out">Hi! A furnace outage in this weather is urgent — flagged as priority. Can I get your name and address so we can get someone out ASAP?</div>
+                        <div class="sms-bubble sms-out">Hi! A furnace outage in this weather is urgent &mdash; flagged as priority. Can I get your name and address so we can get someone out ASAP?</div>
                         <div class="sms-bubble sms-in">Mike Kowalski, 4821 Cedar Ave, Bloomington</div>
                         <div class="sms-bubble sms-out">Got it Mike! A technician will call you within 30 minutes. Best number to reach you?</div>
                         <div class="sms-bubble sms-in">952-555-0147</div>
@@ -285,8 +286,8 @@
             </div>
             <div class="alert-card">
                 <div class="alert-tag"><div class="alert-dot"></div>Owner Alert Sent</div>
-                <div class="alert-title">New HOT Lead 🔴</div>
-                <div class="alert-sub">Mike Kowalski · Furnace outage<br>Respond within 30 min</div>
+                <div class="alert-title">New HOT Lead &#128308;</div>
+                <div class="alert-sub">Mike Kowalski &middot; Furnace outage<br>Respond within 30 min</div>
             </div>
         </div>
     </div>
@@ -296,11 +297,11 @@
 <div class="logos-section">
     <div class="logos-label">Works for any service business</div>
     <div class="logos-row">
+        <div class="logo-item" style="color:var(--accent);font-weight:700;">&#127897; Voice AI</div>
         <div class="logo-item">Contractors</div>
         <div class="logo-item">Dental Offices</div>
         <div class="logo-item">Law Firms</div>
         <div class="logo-item">Real Estate</div>
-        <div class="logo-item">Insurance</div>
         <div class="logo-item">Home Services</div>
     </div>
 </div>
@@ -313,13 +314,13 @@
                 <h2 class="section-title">You're losing customers<br>while you <em>sleep</em></h2>
                 <p class="section-lead">Most small business owners are too busy doing the work to handle everything else. Leads go unanswered. Appointments get missed. Social media goes dark.</p>
                 <br>
-                <a href="#agents" class="btn-primary" style="display:inline-flex;">See the solution →</a>
+                <a href="#agents" class="btn-primary" style="display:inline-flex;">See the solution &rarr;</a>
             </div>
             <div class="problem-cards reveal reveal-delay-2">
-                <div class="prob-card"><span class="prob-icon">📵</span><h3>Missed Calls</h3><p>62% of customers contact a competitor if you don't respond immediately.</p></div>
-                <div class="prob-card"><span class="prob-icon">🌙</span><h3>After Hours</h3><p>Most leads arrive after 6pm. Competitors who respond faster win.</p></div>
-                <div class="prob-card"><span class="prob-icon">📅</span><h3>Booking Chaos</h3><p>Manual scheduling means double bookings, no-shows, and wasted time.</p></div>
-                <div class="prob-card"><span class="prob-icon">📱</span><h3>No Social Presence</h3><p>You know you should post. But who has the time? Your presence suffers.</p></div>
+                <div class="prob-card"><span class="prob-icon">&#128245;</span><h3>Missed Calls</h3><p>62% of customers contact a competitor if you don't respond immediately.</p></div>
+                <div class="prob-card"><span class="prob-icon">&#127769;</span><h3>After Hours</h3><p>Most leads arrive after 6pm. Competitors who respond faster win.</p></div>
+                <div class="prob-card"><span class="prob-icon">&#128197;</span><h3>Booking Chaos</h3><p>Manual scheduling means double bookings, no-shows, and wasted time.</p></div>
+                <div class="prob-card"><span class="prob-icon">&#128241;</span><h3>No Social Presence</h3><p>You know you should post. But who has the time? Your presence suffers.</p></div>
             </div>
         </div>
     </div>
@@ -329,52 +330,68 @@
     <div class="container">
         <div class="reveal" style="margin-bottom:3rem;">
             <div class="section-eyebrow">The Solution</div>
-            <h2 class="section-title">Meet Atlas — your AI<br><em>front office team</em></h2>
-            <p class="section-lead">Four specialized AI agents working together 24/7 to handle every customer interaction automatically.</p>
+            <h2 class="section-title">Meet Atlas &mdash; your AI<br><em>front office team</em></h2>
+            <p class="section-lead">Voice AI that answers calls plus four specialized SMS agents working together 24/7 to handle every customer interaction automatically.</p>
         </div>
         <div class="bento-grid">
+            <!-- Voice AI Card -->
+            <div class="bento-card reveal" style="background:linear-gradient(135deg,#0f0f0f 0%,#1a1a2e 100%);border-color:#2a2a4a;grid-column:span 4;border-radius:var(--radius-lg);padding:1.75rem;">
+                <div class="agent-tag" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">00 &middot; Voice AI</div>
+                <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+                    <div class="bento-icon dark" style="background:rgba(99,102,241,0.2);flex-shrink:0;font-size:1.5rem;">&#127897;</div>
+                    <div style="flex:1;min-width:200px;">
+                        <h3 style="color:white;font-size:1.1rem;margin-bottom:0.5rem;">Voice AI &mdash; Answers Calls Like a Human</h3>
+                        <p style="color:rgba(255,255,255,0.6);margin:0;font-size:0.85rem;line-height:1.6;">Your phone rings first. If you don't answer, Atlas picks up in under a second &mdash; qualifies leads, books demos, handles support. Powered by Retell AI with sub-500ms latency. Sounds like a real person.</p>
+                    </div>
+                    <div style="display:flex;gap:2rem;flex-shrink:0;">
+                        <div style="text-align:center;"><div style="font-size:1.8rem;font-weight:300;color:white;line-height:1;">&lt;1s</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;">Response</div></div>
+                        <div style="text-align:center;"><div style="font-size:1.8rem;font-weight:300;color:white;line-height:1;">24/7</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;">Always on</div></div>
+                        <div style="text-align:center;"><div style="font-size:1.8rem;font-weight:300;color:white;line-height:1;">100%</div><div style="font-size:0.65rem;color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;">Captured</div></div>
+                    </div>
+                </div>
+            </div>
             <div class="bento-card featured reveal reveal-delay-1">
-                <div class="agent-tag">01 · SDR</div>
-                <div class="bento-icon dark">🎯</div>
+                <div class="agent-tag">01 &middot; SDR</div>
+                <div class="bento-icon dark">&#127919;</div>
                 <h3>Lead Qualification</h3>
-                <p>Qualifies every incoming lead instantly — scores them 0–100 and alerts you the moment someone is ready to hire.</p>
+                <p>Qualifies every incoming lead via voice or SMS instantly &mdash; scores them 0&ndash;100 and alerts you the moment someone is ready to hire.</p>
                 <ul class="bento-feats">
-                    <li>Captures name, phone, address & project</li>
-                    <li>AI lead scoring 0–100</li>
+                    <li>Captures name, phone, address &amp; project</li>
+                    <li>AI lead scoring 0&ndash;100</li>
                     <li>Instant HOT lead owner alert via SMS</li>
-                    <li>Multilingual — Spanish, Somali + 10 more</li>
-                    <li>Competitor mention detection & flagging</li>
+                    <li>Multilingual &mdash; Spanish, Somali + 10 more</li>
+                    <li>Competitor mention detection &amp; flagging</li>
                 </ul>
             </div>
             <div class="bento-card reveal reveal-delay-2">
-                <div class="agent-tag">02 · Support</div>
-                <div class="bento-icon blue">🛟</div>
+                <div class="agent-tag">02 &middot; Support</div>
+                <div class="bento-icon blue">&#128663;</div>
                 <h3>Customer Support</h3>
                 <p>Handles customer issues professionally so small problems don't become big ones.</p>
                 <ul class="bento-feats">
                     <li>Automatic warranty checker</li>
-                    <li>Escalation & lawyer threat detection</li>
+                    <li>Escalation &amp; lawyer threat detection</li>
                     <li>Anger level classification</li>
                     <li>Instant owner escalation alert</li>
                 </ul>
             </div>
             <div class="bento-card reveal reveal-delay-3">
-                <div class="agent-tag">03 · Booking</div>
-                <div class="bento-icon amber">📅</div>
+                <div class="agent-tag">03 &middot; Booking</div>
+                <div class="bento-icon amber">&#128197;</div>
                 <h3>Appointment Booking</h3>
-                <p>Books appointments automatically — no back and forth, no double bookings.</p>
+                <p>Books appointments automatically &mdash; no back and forth, no double bookings.</p>
                 <ul class="bento-feats">
-                    <li>Real-time availability management</li>
+                    <li>Real-time GHL calendar availability</li>
                     <li>Double booking prevention</li>
                     <li>Owner confirmation system</li>
-                    <li>Reschedule & cancellation handling</li>
+                    <li>Reschedule &amp; cancellation handling</li>
                 </ul>
             </div>
             <div class="bento-card wide reveal reveal-delay-4">
-                <div class="agent-tag">04 · Content</div>
-                <div class="bento-icon purple">📣</div>
+                <div class="agent-tag">04 &middot; Content</div>
+                <div class="bento-icon purple">&#128227;</div>
                 <h3>Social Media Content</h3>
-                <p>Send one job photo — get four professional posts for Facebook, Instagram, LinkedIn, and Twitter in under 30 seconds. Atlas analyzes photos with AI vision and writes platform-specific content in your brand voice.</p>
+                <p>Send one job photo &mdash; get four professional posts for Facebook, Instagram, LinkedIn, and Twitter in under 30 seconds. Atlas analyzes photos with AI vision and writes platform-specific content in your brand voice.</p>
                 <ul class="bento-feats">
                     <li>AI photo analysis and description</li>
                     <li>Platform-optimized posts for all 4 channels</li>
@@ -390,50 +407,48 @@
     <div class="container">
         <div class="demo-layout">
             <div class="reveal">
-                <div class="section-eyebrow">Live Demo</div>
-                <h2 class="section-title">See Atlas handle a<br><em>real conversation</em></h2>
-                <p class="section-lead">A new patient books an appointment at 7:42 PM on a Tuesday — captured, qualified, and scheduled in under 2 minutes.</p>
+                <div class="section-eyebrow">Voice + SMS</div>
+                <h2 class="section-title">Voice AI answers calls.<br><em>SMS handles the rest.</em></h2>
+                <p class="section-lead">A roofing contractor calls after hours. Your phone rings first &mdash; if you don't answer, Atlas picks up in under a second and handles the entire conversation naturally.</p>
                 <br>
                 <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;">
                     <div style="display:flex;gap:0.875rem;align-items:flex-start;">
-                        <div style="width:36px;height:36px;background:var(--accent-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">⚡</div>
-                        <div><div style="font-size:0.875rem;font-weight:600;margin-bottom:0.2rem;">Responds in under 15 seconds</div><div style="font-size:0.8rem;color:var(--ink-3);">Every time. Every day. Every industry.</div></div>
+                        <div style="width:36px;height:36px;background:var(--accent-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">&#9889;</div>
+                        <div><div style="font-size:0.875rem;font-weight:600;margin-bottom:0.2rem;">Answers calls in under 1 second</div><div style="font-size:0.8rem;color:var(--ink-3);">Voice calls answered. Texts handled. Every industry.</div></div>
                     </div>
                     <div style="display:flex;gap:0.875rem;align-items:flex-start;">
-                        <div style="width:36px;height:36px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">🧠</div>
-                        <div><div style="font-size:0.875rem;font-weight:600;margin-bottom:0.2rem;">AI scores every lead 0–100</div><div style="font-size:0.8rem;color:var(--ink-3);">HOT leads get an instant SMS to your phone.</div></div>
+                        <div style="width:36px;height:36px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">&#129504;</div>
+                        <div><div style="font-size:0.875rem;font-weight:600;margin-bottom:0.2rem;">Ring-then-Atlas voice flow</div><div style="font-size:0.8rem;color:var(--ink-3);">Your phone rings first. Atlas only steps in if you don't answer.</div></div>
                     </div>
                     <div style="display:flex;gap:0.875rem;align-items:flex-start;">
-                        <div style="width:36px;height:36px;background:var(--amber-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">📋</div>
-                        <div><div style="font-size:0.875rem;font-weight:600;margin-bottom:0.2rem;">Books appointments automatically</div><div style="font-size:0.8rem;color:var(--ink-3);">Checks availability, confirms the slot, captures contact info.</div></div>
+                        <div style="width:36px;height:36px;background:var(--amber-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">&#128203;</div>
+                        <div><div style="font-size:0.875rem;font-weight:600;margin-bottom:0.2rem;">Books appointments automatically</div><div style="font-size:0.8rem;color:var(--ink-3);">Checks real GHL availability, confirms the slot, captures contact info.</div></div>
                     </div>
                 </div>
             </div>
             <div class="demo-window reveal reveal-delay-2">
                 <div class="demo-bar">
                     <div class="demo-dot d-red"></div><div class="demo-dot d-yellow"></div><div class="demo-dot d-green"></div>
-                    <div class="demo-title-bar">Atlas · Active Session</div>
+                    <div class="demo-title-bar">Atlas Voice &middot; Active Call</div>
                 </div>
                 <div class="demo-body">
-                    <div class="dmsg"><div class="dmsg-label from">Customer · 7:42 PM</div><div class="dmsg-bubble from">Hi, I have a toothache that's been bothering me for a few days. Do you have any openings this week?</div></div>
+                    <div class="dmsg"><div class="dmsg-label from">Customer calls &middot; 9:47 PM</div><div class="dmsg-bubble from">&#128222; Incoming call &mdash; Roofing contractor</div></div>
                     <div class="dmsg right">
-                        <div class="dmsg-label atlas">Atlas · 7:42 PM</div>
-                        <div class="dmsg-bubble atlas">Hi! Sorry to hear that — tooth pain is no fun. We do have openings this week. Can I get your name and whether you're a new or returning patient?</div>
+                        <div class="dmsg-label atlas">Atlas Voice &middot; 9:47 PM</div>
+                        <div class="dmsg-bubble atlas">Good evening! Thanks for calling HiveMind AI &mdash; I'm Atlas, how can I help you today?</div>
+                        <div class="demo-tag"><div class="demo-tag-dot"></div><span>VOICE AI ANSWERED &middot; &lt;1 second</span></div>
                     </div>
-                    <div class="dmsg"><div class="dmsg-label from">Customer · 7:43 PM</div><div class="dmsg-bubble from">Sarah Mitchell, I'm a new patient</div></div>
+                    <div class="dmsg"><div class="dmsg-label from">Caller &middot; 9:47 PM</div><div class="dmsg-bubble from">Hi I run a roofing company and I keep missing calls when I'm on jobs. Can Atlas help?</div></div>
                     <div class="dmsg right">
-                        <div class="dmsg-label atlas">Atlas · 7:43 PM</div>
-                        <div class="dmsg-bubble atlas">Welcome Sarah! We have Thursday at 2:00 PM or Friday at 10:00 AM available for a same-week exam. Which works better for you?</div>
-                        <div class="demo-tag"><div class="demo-tag-dot"></div><span>NEW PATIENT · Booking in progress</span></div>
+                        <div class="dmsg-label atlas">Atlas &middot; 9:47 PM</div>
+                        <div class="dmsg-bubble atlas">Absolutely &mdash; that's exactly what I'm built for. I answer every call and text 24/7 so you never lose a lead while you're on a roof. Pricing starts at $600 a month. Want me to book a demo?</div>
                     </div>
-                    <div class="dmsg"><div class="dmsg-label from">Customer · 7:43 PM</div><div class="dmsg-bubble from">Thursday at 2 works great</div></div>
+                    <div class="dmsg"><div class="dmsg-label from">Caller &middot; 9:48 PM</div><div class="dmsg-bubble from">Yes, I'm available Thursday at 10 AM. Mike Johnson, 612-555-0147</div></div>
                     <div class="dmsg right">
-                        <div class="dmsg-label atlas">Atlas · 7:44 PM</div>
-                        <div class="dmsg-bubble atlas">Perfect! You're booked for Thursday at 2:00 PM. You'll get a reminder the morning of. Can I get a good callback number in case we need to reach you?</div>
-                        <div class="demo-tag" style="background:rgba(22,163,74,0.1);border-color:rgba(22,163,74,0.2);color:#16a34a;"><div class="demo-tag-dot" style="background:#16a34a;"></div><span>APPOINTMENT BOOKED · Owner alerted via SMS</span></div>
+                        <div class="dmsg-label atlas">Atlas &middot; 9:48 PM</div>
+                        <div class="dmsg-bubble atlas">Perfect Mike! Booked for Thursday at 10 AM &mdash; Boris will call you at 612-555-0147. Looking forward to it!</div>
+                        <div class="demo-tag" style="background:rgba(22,163,74,0.1);border-color:rgba(22,163,74,0.2);color:#16a34a;"><div class="demo-tag-dot" style="background:#16a34a;"></div><span>DEMO BOOKED IN GHL &middot; Owner alerted</span></div>
                     </div>
-                    <div class="dmsg"><div class="dmsg-label from">Customer · 7:44 PM</div><div class="dmsg-bubble from">612-555-0182, thanks so much!</div></div>
-                    <div class="dmsg right"><div class="dmsg-label atlas">Atlas · 7:44 PM</div><div class="dmsg-bubble atlas">You're all set Sarah! See you Thursday at 2 PM. Have a great evening!</div></div>
                 </div>
             </div>
         </div>
@@ -445,15 +460,15 @@
         <div style="text-align:center;max-width:600px;margin:0 auto;" class="reveal">
             <div class="section-eyebrow">Atlas by the Numbers</div>
             <h2 class="section-title">Real capabilities.<br><em>Measurable results.</em></h2>
-            <p class="section-lead" style="margin:0 auto;">No fabricated reviews. Just what Atlas actually does — verified and consistent across every deployment.</p>
+            <p class="section-lead" style="margin:0 auto;">No fabricated reviews. Just what Atlas actually does &mdash; verified and consistent across every deployment.</p>
         </div>
         <div class="results-grid reveal reveal-delay-1">
-            <div class="result-item"><div class="result-number"><span>&lt;</span>15<span>s</span></div><div class="result-label">Average Response Time</div><p class="result-desc">Atlas responds to every message in under 15 seconds — 24 hours a day, 7 days a week, including holidays.</p></div>
-            <div class="result-item"><div class="result-number">100<span>%</span></div><div class="result-label">Leads Captured</div><p class="result-desc">Every inquiry gets captured with full contact details — name, phone, address, and project description.</p></div>
-            <div class="result-item"><div class="result-number"><span>0</span></div><div class="result-label">Missed After-Hours Leads</div><p class="result-desc">A customer texting at 2am on Sunday gets an immediate professional response. Every time.</p></div>
+            <div class="result-item"><div class="result-number"><span>&lt;</span>1<span>s</span></div><div class="result-label">Voice &amp; SMS Response</div><p class="result-desc">Atlas answers voice calls in under 1 second via Retell AI, and responds to texts in under 15 seconds &mdash; 24/7 including holidays.</p></div>
+            <div class="result-item"><div class="result-number">100<span>%</span></div><div class="result-label">Leads Captured</div><p class="result-desc">Every inquiry gets captured with full contact details &mdash; name, phone, address, and project description.</p></div>
+            <div class="result-item"><div class="result-number"><span>0</span></div><div class="result-label">Missed After-Hours Leads</div><p class="result-desc">A customer calling at 2am on Sunday gets an immediate professional response. Every time.</p></div>
             <div class="result-item"><div class="result-number">10<span>+</span></div><div class="result-label">Languages Supported</div><p class="result-desc">Atlas auto-detects the customer's language and responds in kind. Spanish, Somali, French, and more.</p></div>
             <div class="result-item"><div class="result-number">4</div><div class="result-label">Platforms Per Photo</div><p class="result-desc">Send one job photo. Get ready-to-post content for Facebook, Instagram, LinkedIn, and Twitter.</p></div>
-            <div class="result-item"><div class="result-number">64</div><div class="result-label">QA Tests Passed</div><p class="result-desc">Tested against 64 automated scenarios before every deployment — edge cases, attacks, and more.</p></div>
+            <div class="result-item"><div class="result-number">64</div><div class="result-label">QA Tests Passed</div><p class="result-desc">Tested against 64 automated scenarios before every deployment &mdash; edge cases, attacks, and more.</p></div>
         </div>
     </div>
 </section>
@@ -466,9 +481,9 @@
             <p class="section-lead" style="margin:0 auto;">We handle the entire setup. You just answer questions about your business. No tech knowledge required.</p>
         </div>
         <div class="steps-grid">
-            <div class="step-item reveal reveal-delay-1"><div class="step-num">1</div><h3>Discovery Call</h3><p>45 minutes learning your business — services, pricing, tone, and how you work with customers.</p></div>
+            <div class="step-item reveal reveal-delay-1"><div class="step-num">1</div><h3>Discovery Call</h3><p>45 minutes learning your business &mdash; services, pricing, tone, and how you work with customers.</p></div>
             <div class="step-item reveal reveal-delay-2"><div class="step-num">2</div><h3>Custom Setup</h3><p>We configure Atlas specifically for your business. Your name, your services, your voice. Fully tailored.</p></div>
-            <div class="step-item reveal reveal-delay-3"><div class="step-num">3</div><h3>Go Live</h3><p>We text-enable your existing number — landline or cell. Calls work exactly as before. Atlas handles all texts automatically. Your customers notice nothing different.</p></div>
+            <div class="step-item reveal reveal-delay-3"><div class="step-num">3</div><h3>Go Live</h3><p>We connect your existing number. Calls ring your phone first &mdash; if you're busy, Atlas answers in under a second. Texts are handled automatically. Your customers get a response every time, day or night.</p></div>
         </div>
     </div>
 </section>
@@ -478,27 +493,27 @@
         <div style="text-align:center;max-width:640px;margin:0 auto 3rem;" class="reveal">
             <div class="section-eyebrow">Zero Disruption</div>
             <h2 class="section-title">Keep your number.<br><em>Keep your customers.</em></h2>
-            <p class="section-lead" style="margin:0 auto;">No new numbers to advertise. No confusion for your customers. Atlas works with your existing phone number — we just add texting to it.</p>
+            <p class="section-lead" style="margin:0 auto;">No new numbers to advertise. No confusion for your customers. Atlas works with your existing phone number &mdash; calls ring you first, texts go to Atlas automatically.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:900px;margin:0 auto;">
             <div style="background:var(--off);border:1px solid var(--line);border-radius:var(--radius);padding:2rem;">
-                <div style="font-size:1.5rem;margin-bottom:1rem;">🏢</div>
-                <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:400;margin-bottom:0.75rem;">Landline numbers</h3>
-                <p style="color:var(--ink-3);font-size:0.9rem;line-height:1.7;">We text-enable your existing landline. Your patients and customers can now text the same number they call. Voice calls continue working exactly as before — nothing changes on your end.</p>
+                <div style="font-size:1.5rem;margin-bottom:1rem;">&#127897;</div>
+                <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:400;margin-bottom:0.75rem;">Voice calls answered</h3>
+                <p style="color:var(--ink-3);font-size:0.9rem;line-height:1.7;">Your phone rings first &mdash; always. If you don't answer within 10 seconds, Atlas picks up automatically. Caller gets a professional response, you get an alert. No lead lost.</p>
             </div>
             <div style="background:var(--off);border:1px solid var(--line);border-radius:var(--radius);padding:2rem;">
-                <div style="font-size:1.5rem;margin-bottom:1rem;">📱</div>
-                <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:400;margin-bottom:0.75rem;">Cell phone numbers</h3>
-                <p style="color:var(--ink-3);font-size:0.9rem;line-height:1.7;">We host your business cell number so texts are handled by Atlas while calls still ring your phone. Your number stays yours — we just add a 24/7 AI layer to handle the texts.</p>
+                <div style="font-size:1.5rem;margin-bottom:1rem;">&#128241;</div>
+                <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:400;margin-bottom:0.75rem;">Texts handled automatically</h3>
+                <p style="color:var(--ink-3);font-size:0.9rem;line-height:1.7;">Every text to your number gets an intelligent response in under 15 seconds. Atlas qualifies the lead, books the appointment, or handles the support issue &mdash; all automatically.</p>
             </div>
             <div style="background:var(--off);border:1px solid var(--line);border-radius:var(--radius);padding:2rem;">
-                <div style="font-size:1.5rem;margin-bottom:1rem;">⚡</div>
+                <div style="font-size:1.5rem;margin-bottom:1rem;">&#9889;</div>
                 <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:400;margin-bottom:0.75rem;">Same-day activation</h3>
                 <p style="color:var(--ink-3);font-size:0.9rem;line-height:1.7;">Setup takes under 2 hours. Your customers start getting instant responses the same day. No downtime, no transition period, no learning curve for your team.</p>
             </div>
         </div>
         <div style="text-align:center;margin-top:2.5rem;padding:1.5rem;background:var(--accent-light);border-radius:var(--radius);max-width:600px;margin:2.5rem auto 0;">
-            <p style="color:var(--accent);font-size:0.95rem;font-weight:500;">Your customers text the number they already know. Atlas answers in under 15 seconds. You get notified of every lead, booking, and issue — automatically.</p>
+            <p style="color:var(--accent);font-size:0.95rem;font-weight:500;">Calls ring your phone first. If you don't answer, Atlas picks up in under a second. Texts get an instant response every time &mdash; 24/7, 365.</p>
         </div>
     </div>
 </section>
@@ -508,42 +523,56 @@
         <div style="text-align:center;max-width:600px;margin:0 auto;" class="reveal">
             <div class="section-eyebrow">Pricing</div>
             <h2 class="section-title">Simple, transparent<br><em>pricing</em></h2>
-            <p class="section-lead" style="margin:0 auto;">No long term contracts. Cancel anytime. Setup fee covers full custom configuration for your business.</p>
+            <p class="section-lead" style="margin:0 auto;">No long term contracts. Cancel anytime. Setup fee covers full custom configuration for your business. Less than $20/day.</p>
         </div>
         <div class="pricing-grid">
             <div class="price-card reveal reveal-delay-1">
                 <div class="plan-name">Starter</div>
-                <div class="plan-price"><sup>$</sup>800<sub>/mo</sub></div>
+                <div class="plan-price"><sup>$</sup>600<sub>/mo</sub></div>
                 <div class="plan-setup">+ $1,200 one-time setup fee</div>
                 <div class="plan-divider"></div>
                 <ul class="plan-features">
-                    <li>1 AI Agent of your choice</li><li>SMS integration</li><li>Lead summaries & owner alerts</li>
-                    <li>24/7 coverage</li><li>Monthly performance report</li><li>Email support</li>
+                    <li>Voice AI answering (ring-then-Atlas)</li>
+                    <li>1 AI Agent of your choice</li>
+                    <li>SMS integration</li>
+                    <li>Lead summaries &amp; owner alerts</li>
+                    <li>24/7 coverage</li>
+                    <li>Monthly performance report</li>
+                    <li>Email support</li>
                 </ul>
                 <a href="#contact" class="plan-btn plan-btn-ghost">Get Started</a>
             </div>
             <div class="price-card highlight reveal reveal-delay-2">
                 <div class="popular-tag">Most Popular</div>
                 <div class="plan-name">Growth</div>
-                <div class="plan-price"><sup>$</sup>1,800<sub>/mo</sub></div>
+                <div class="plan-price"><sup>$</sup>1,200<sub>/mo</sub></div>
                 <div class="plan-setup">+ $2,500 one-time setup fee</div>
                 <div class="plan-divider"></div>
                 <ul class="plan-features">
-                    <li>All 4 AI Agents</li><li>SMS + CRM integration</li><li>Full lead management</li>
-                    <li>Booking automation</li><li>Social media content</li><li>Priority owner alerts</li>
-                    <li>Weekly performance report</li><li>Dedicated support</li>
+                    <li>Voice AI + All 4 SMS Agents</li>
+                    <li>SMS + CRM integration</li>
+                    <li>Full lead management</li>
+                    <li>Booking automation</li>
+                    <li>Social media content</li>
+                    <li>Priority owner alerts</li>
+                    <li>Weekly performance report</li>
+                    <li>Dedicated support</li>
                 </ul>
                 <a href="#contact" class="plan-btn plan-btn-white">Get Started</a>
             </div>
             <div class="price-card reveal reveal-delay-3">
                 <div class="plan-name">Premium</div>
-                <div class="plan-price"><sup>$</sup>3,500<sub>/mo</sub></div>
+                <div class="plan-price"><sup>$</sup>1,800<sub>/mo</sub></div>
                 <div class="plan-setup">+ $5,000 one-time setup fee</div>
                 <div class="plan-divider"></div>
                 <ul class="plan-features">
-                    <li>Everything in Growth</li><li>Custom AI workflows</li><li>Multi-location support</li>
-                    <li>API integrations</li><li>Custom reporting dashboard</li>
-                    <li>Dedicated account manager</li><li>SLA guarantee</li>
+                    <li>Everything in Growth</li>
+                    <li>Custom AI workflows</li>
+                    <li>Multi-location support</li>
+                    <li>API integrations</li>
+                    <li>Custom reporting dashboard</li>
+                    <li>Dedicated account manager</li>
+                    <li>SLA guarantee</li>
                 </ul>
                 <a href="#contact" class="plan-btn plan-btn-ghost">Contact Us</a>
             </div>
@@ -556,8 +585,8 @@
         <div class="section-eyebrow" style="color:rgba(255,255,255,0.4);justify-content:center;display:flex;">Get Started</div>
         <h2 class="section-title" style="font-size:clamp(2.2rem,4vw,3.5rem);margin-bottom:1rem;">Ready to put your front office<br><em>on autopilot?</em></h2>
         <p>Book a free 30 minute demo. We'll show you Atlas live with your business name on it. No commitment required.</p>
-        <a href="#" onclick="openBooking(event)" class="btn-cta">Book Your Free Demo →</a>
-        <div class="cta-note">No contracts · No commitments · Just results</div>
+        <a href="#" onclick="openBooking(event)" class="btn-cta">Book Your Free Demo &rarr;</a>
+        <div class="cta-note">No contracts &middot; No commitments &middot; Just results</div>
     </div>
 </section>
 
@@ -588,15 +617,14 @@
             <li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li>
             <li><a href="mailto:boris@hivemindagency.ai">Contact</a></li>
         </ul>
-        <p class="footer-copy">© 2026 HiveMind AI LLC. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2026 HiveMind AI LLC. All rights reserved.</p>
     </div>
 </footer>
-
 
 <!-- Booking Modal -->
 <div id="booking-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
   <div style="background:white;border-radius:16px;width:90%;max-width:760px;height:90vh;position:relative;overflow-y:auto;">
-    <button onclick="closeBooking()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#555;z-index:1;">✕</button>
+    <button onclick="closeBooking()" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#555;z-index:1;">&#10005;</button>
     <iframe src="https://api.leadconnectorhq.com/widget/booking/AkL6VkeO4BirMQepj3eH" style="width:100%;height:900px;border:none;" scrolling="no"></iframe>
   </div>
 </div>
@@ -753,7 +781,6 @@
 }
 </style>
 
-<!-- Chat Bubble -->
 <div id="atlas-chat-bubble" onclick="toggleAtlasChat()">
     <div id="atlas-chat-badge"></div>
     <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -761,23 +788,22 @@
     </svg>
 </div>
 
-<!-- Chat Window -->
 <div id="atlas-chat-window">
     <div id="atlas-chat-header">
         <div class="atlas-header-left">
             <div class="atlas-avatar">A</div>
             <div class="atlas-header-info">
                 <span class="atlas-header-name">Atlas by HiveMind AI</span>
-                <span class="atlas-header-status">● Online now</span>
+                <span class="atlas-header-status">&#9679; Online now</span>
             </div>
         </div>
-        <button id="atlas-chat-close" onclick="toggleAtlasChat()">✕</button>
+        <button id="atlas-chat-close" onclick="toggleAtlasChat()">&#10005;</button>
     </div>
     <div id="atlas-chat-messages">
-        <div class="atlas-chat-intro">Atlas AI · Typically replies instantly</div>
+        <div class="atlas-chat-intro">Atlas AI &middot; Typically replies instantly</div>
     </div>
     <div id="atlas-chat-footer">
-        <input id="atlas-chat-input" type="text" placeholder="Ask me anything..." 
+        <input id="atlas-chat-input" type="text" placeholder="Ask me anything..."
                onkeydown="if(event.key==='Enter')sendAtlasMessage()">
         <button id="atlas-chat-send" onclick="sendAtlasMessage()">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -803,7 +829,7 @@ function toggleAtlasChat() {
             showTyping();
             setTimeout(() => {
                 removeTyping();
-                addAtlasMessage("Hi! I'm Atlas, HiveMind AI's front office assistant. I can answer questions about Atlas, show you how it works, or help you book a free demo. What would you like to know?");
+                addAtlasMessage("Hi! I'm Atlas, HiveMind AI's AI front office assistant. I handle calls and texts 24/7 — voice AI that answers in under a second, plus SMS agents for lead qualification, booking, support, and social content. What would you like to know?");
             }, 1200);
         }, 400);
         document.getElementById('atlas-chat-input').focus();
@@ -815,7 +841,7 @@ function addAtlasMessage(text) {
     const now = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
     const div = document.createElement('div');
     div.className = 'atlas-msg atlas';
-    div.innerHTML = `<div class="atlas-msg-bubble">${text.replace(/\n/g, '<br>')}</div><div class="atlas-msg-time">${now}</div>`;
+    div.innerHTML = '<div class="atlas-msg-bubble">' + text.replace(/\n/g, '<br>') + '</div><div class="atlas-msg-time">' + now + '</div>';
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
 }
@@ -825,7 +851,7 @@ function addUserMessage(text) {
     const now = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
     const div = document.createElement('div');
     div.className = 'atlas-msg user';
-    div.innerHTML = `<div class="atlas-msg-bubble">${text}</div><div class="atlas-msg-time">${now}</div>`;
+    div.innerHTML = '<div class="atlas-msg-bubble">' + text + '</div><div class="atlas-msg-time">' + now + '</div>';
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
 }
@@ -849,16 +875,14 @@ async function sendAtlasMessage() {
     const input = document.getElementById('atlas-chat-input');
     const message = input.value.trim();
     if (!message) return;
-
     input.value = '';
     addUserMessage(message);
     showTyping();
-
     try {
-        const response = await fetch(`${ATLAS_API}/chat`, {
+        const response = await fetch(ATLAS_API + '/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message, session_id: atlasSessionId })
+            body: JSON.stringify({ message: message, session_id: atlasSessionId })
         });
         const data = await response.json();
         removeTyping();
