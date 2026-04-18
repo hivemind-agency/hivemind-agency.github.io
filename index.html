@@ -229,6 +229,7 @@
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="#try-atlas">Try It</a></li>
     </ul>
     <div class="nav-right">
         <a href="mailto:boris@hivemindagency.ai" class="btn-nav-ghost">Contact</a>
@@ -696,6 +697,60 @@
     </div>
 </section>
 
+<section class="section" id="try-atlas">
+    <div class="container">
+
+        <div style="text-align:center;max-width:620px;margin:0 auto 3rem;" class="reveal">
+            <div class="section-eyebrow">Try It Yourself</div>
+            <h2 class="section-title">Text Atlas<br><em>right now.</em></h2>
+            <p class="section-lead" style="margin:0 auto;">Don't take our word for it. Drop your number and Atlas will text you a live demo. Ask it anything &mdash; pricing, how it works, what it costs vs a receptionist. No sales pitch. Just Atlas answering.</p>
+        </div>
+
+        <form id="sms-optin-form" class="reveal reveal-delay-1" style="max-width:560px;margin:0 auto;background:white;border:1px solid var(--line);border-radius:var(--radius-lg);padding:2.5rem;box-shadow:var(--shadow);">
+
+            <div style="margin-bottom:1.25rem;">
+                <label for="optin-name" style="display:block;font-size:0.78rem;font-weight:600;color:var(--ink-2);margin-bottom:0.4rem;letter-spacing:0.02em;">Your name</label>
+                <input type="text" id="optin-name" name="name" required placeholder="Your full name"
+                    style="width:100%;padding:0.75rem 1rem;border:1px solid var(--line-2);border-radius:10px;font-size:0.95rem;font-family:var(--font-sans);color:var(--ink);background:white;outline:none;"
+                    onfocus="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 0 3px var(--accent-mid)';"
+                    onblur="this.style.borderColor='var(--line-2)';this.style.boxShadow='none';">
+            </div>
+
+            <div style="margin-bottom:1.25rem;">
+                <label for="optin-phone" style="display:block;font-size:0.78rem;font-weight:600;color:var(--ink-2);margin-bottom:0.4rem;letter-spacing:0.02em;">Mobile phone number</label>
+                <input type="tel" id="optin-phone" name="phone" required placeholder="(763) 555-1234" pattern="[0-9\s\-\(\)\+\.]{10,}"
+                    style="width:100%;padding:0.75rem 1rem;border:1px solid var(--line-2);border-radius:10px;font-size:0.95rem;font-family:var(--font-sans);color:var(--ink);background:white;outline:none;"
+                    onfocus="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 0 3px var(--accent-mid)';"
+                    onblur="this.style.borderColor='var(--line-2)';this.style.boxShadow='none';">
+                <div style="font-size:0.72rem;color:var(--ink-3);margin-top:0.35rem;">US phone numbers only. We'll text you within a few seconds.</div>
+            </div>
+
+            <div style="background:var(--off);border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.1rem;margin-bottom:1.5rem;">
+                <label for="optin-consent" style="display:flex;align-items:flex-start;gap:0.7rem;cursor:pointer;">
+                    <input type="checkbox" id="optin-consent" name="consent" required
+                        style="width:18px;height:18px;margin-top:2px;flex-shrink:0;cursor:pointer;accent-color:var(--accent);">
+                    <span style="font-size:0.78rem;line-height:1.6;color:var(--ink-2);">
+                        By checking this box, I agree to receive SMS messages from HiveMind AI LLC at the phone number provided. Messages are automated and may include demo content, lead qualification questions, and follow-up from Boris. Message frequency varies &mdash; typically 1 to 5 messages per inquiry. Message &amp; data rates may apply. Reply <strong>HELP</strong> for help or <strong>STOP</strong> to opt out at any time. See our <a href="/privacy.html" style="color:var(--accent);text-decoration:underline;">Privacy Policy</a> and <a href="/terms.html" style="color:var(--accent);text-decoration:underline;">Terms of Service</a>.
+                    </span>
+                </label>
+            </div>
+
+            <button type="submit" id="optin-submit"
+                style="width:100%;background:var(--ink);color:white;border:none;border-radius:10px;padding:0.9rem 1.5rem;font-size:0.95rem;font-weight:500;font-family:var(--font-sans);cursor:pointer;transition:background 0.2s,transform 0.2s,box-shadow 0.2s;"
+                onmouseover="this.style.background='var(--ink-2)';this.style.transform='translateY(-1px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.15)';"
+                onmouseout="this.style.background='var(--ink)';this.style.transform='translateY(0)';this.style.boxShadow='none';">
+                Text me a demo &rarr;
+            </button>
+
+            <div style="text-align:center;font-size:0.72rem;color:var(--ink-3);margin-top:0.9rem;">Your info is never sold or shared. Used only to text you the demo.</div>
+
+            <div id="optin-status" style="display:none;margin-top:1.25rem;padding:0.9rem 1.1rem;border-radius:10px;font-size:0.85rem;text-align:center;font-weight:500;"></div>
+
+        </form>
+
+    </div>
+</section>
+
 <section class="cta-section" id="contact">
     <div class="cta-inner reveal">
         <div class="section-eyebrow" style="color:rgba(255,255,255,0.4);justify-content:center;display:flex;">Get Started</div>
@@ -720,6 +775,7 @@
 </svg></div>HiveMind AI</a>
         <ul class="footer-links">
             <li><a href="#agents">Agents</a></li><li><a href="#pricing">Pricing</a></li>
+            <li><a href="#try-atlas">Try Atlas</a></li>
             <li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li>
             <li><a href="mailto:boris@hivemindagency.ai">Contact</a></li>
         </ul>
@@ -998,6 +1054,82 @@ async function sendAtlasMessage() {
         addAtlasMessage("I'm having a moment — please try again or email us at boris@hivemindagency.ai");
     }
 }
+</script>
+
+<!-- SMS Opt-In Form Handler -->
+<script>
+(function() {
+    const form = document.getElementById('sms-optin-form');
+    if (!form) return;
+
+    const submitBtn = document.getElementById('optin-submit');
+    const statusEl  = document.getElementById('optin-status');
+
+    function showStatus(message, type) {
+        statusEl.textContent = message;
+        statusEl.style.display = 'block';
+        if (type === 'success') {
+            statusEl.style.background = 'var(--green-light)';
+            statusEl.style.color      = 'var(--green)';
+            statusEl.style.border     = '1px solid #bbf7d0';
+        } else if (type === 'error') {
+            statusEl.style.background = '#fef2f2';
+            statusEl.style.color      = '#dc2626';
+            statusEl.style.border     = '1px solid #fecaca';
+        } else {
+            statusEl.style.background = 'var(--off)';
+            statusEl.style.color      = 'var(--ink-2)';
+            statusEl.style.border     = '1px solid var(--line)';
+        }
+    }
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const name    = document.getElementById('optin-name').value.trim();
+        const phone   = document.getElementById('optin-phone').value.trim();
+        const consent = document.getElementById('optin-consent').checked;
+
+        if (!name || !phone || !consent) {
+            showStatus('Please fill in all fields and agree to receive SMS.', 'error');
+            return;
+        }
+
+        submitBtn.disabled      = true;
+        submitBtn.style.opacity = '0.6';
+        submitBtn.style.cursor  = 'not-allowed';
+        submitBtn.textContent   = 'Sending...';
+
+        try {
+            const response = await fetch('https://api.hivemindagency.ai/sms-optin', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name:      name,
+                    phone:     phone,
+                    consent:   consent,
+                    timestamp: new Date().toISOString(),
+                    source:    'hivemindagency.ai #try-atlas'
+                })
+            });
+
+            if (response.ok) {
+                showStatus("Sent! Atlas will text you in a few seconds. Watch your phone.", 'success');
+                form.reset();
+            } else {
+                const data = await response.json().catch(() => ({}));
+                showStatus(data.message || "Something went wrong. Try again or email boris@hivemindagency.ai.", 'error');
+            }
+        } catch (err) {
+            showStatus("Network error. Try again or email boris@hivemindagency.ai.", 'error');
+        } finally {
+            submitBtn.disabled      = false;
+            submitBtn.style.opacity = '1';
+            submitBtn.style.cursor  = 'pointer';
+            submitBtn.textContent   = 'Text me a demo \u2192';
+        }
+    });
+})();
 </script>
 
 </body>
