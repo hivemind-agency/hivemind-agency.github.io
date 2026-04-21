@@ -20,7 +20,7 @@
             --shadow-lg: 0 4px 6px rgba(0,0,0,0.05), 0 16px 40px rgba(0,0,0,0.1);
         }
         html { scroll-behavior: smooth; }
-        body { font-family: var(--font-sans); background: var(--white); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--font-sans); background: var(--white); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         nav {
             position: sticky; top: 0; z-index: 100;
             background: rgba(255,255,255,0.92); backdrop-filter: blur(20px);
@@ -43,7 +43,7 @@
         .btn-nav-phone:hover { color: var(--accent); background: var(--accent-light); }
         .btn-nav-phone svg { color: var(--accent); flex-shrink: 0; }
         .hero { padding: 5rem 2rem 4rem; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--green-light); border: 1px solid #bbf7d0; color: var(--green); padding: 0.3rem 0.75rem; border-radius: 100px; font-size: 0.78rem; font-weight: 500; margin-bottom: 1.5rem; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--green-light); border: 1px solid #bbf7d0; color: var(--green); padding: 0.3rem 0.75rem; border-radius: 100px; font-size: 0.78rem; font-weight: 500; margin-bottom: 1.5rem; max-width: 100%; flex-wrap: wrap; line-height: 1.4; }
         .badge-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s ease infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(0.8); } }
         .hero h1 { font-family: var(--font-serif); font-size: clamp(2.8rem, 4.5vw, 4rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
@@ -54,7 +54,7 @@
         .btn-primary:hover { background: var(--ink-2); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
         .btn-secondary { background: white; color: var(--ink-2); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.75rem 1.75rem; border-radius: 10px; border: 1px solid var(--line-2); transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
         .btn-secondary:hover { border-color: var(--ink-3); transform: translateY(-1px); box-shadow: var(--shadow); }
-        .hero-proof { display: flex; align-items: center; gap: 0.75rem; font-size: 0.82rem; color: var(--ink-3); }
+        .hero-proof { display: flex; align-items: center; gap: 0.75rem; font-size: 0.82rem; color: var(--ink-3); flex-wrap: wrap; }
         .proof-avatars { display: flex; }
         .proof-avatar { width: 28px; height: 28px; border-radius: 50%; border: 2px solid white; margin-left: -8px; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 600; color: white; }
         .proof-avatar:first-child { margin-left: 0; }
@@ -186,7 +186,7 @@
         .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
         .footer-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--ink); font-size: 0.9rem; font-weight: 600; }
         .footer-logo-mark { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; }
-        .footer-links { display: flex; gap: 2rem; list-style: none; }
+        .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; justify-content: center; }
         .footer-links a { color: var(--ink-3); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
         .footer-links a:hover { color: var(--ink); }
         .footer-copy { font-size: 0.8rem; color: var(--line-2); }
@@ -205,7 +205,7 @@
             .bento-grid { grid-template-columns: 1fr; }
             .bento-card[style*="span 4"] { grid-column: span 1 !important; }
             .footer-inner { flex-direction: column; text-align: center; }
-            .footer-links { justify-content: center; }
+            .footer-links { justify-content: center; gap: 1rem 1.25rem; }
             .btn-nav-ghost { display: none; }
             .btn-nav-phone { display: none; }
         }
@@ -392,7 +392,7 @@
                 <div class="bento-icon purple">&#128227;</div>
                 <h3>Social Media Content</h3>
                 <p>Send one job photo &mdash; get four professional posts for Facebook, Instagram, LinkedIn, and X in under 30 seconds. Atlas analyzes photos with AI vision and writes platform-specific content in your brand voice.</p>
-                <div style="display:flex;gap:10px;margin:1rem 0 0.75rem;">
+                <div style="display:flex;gap:10px;margin:1rem 0 0.75rem;flex-wrap:wrap;">
                     <!-- Facebook -->
                     <div style="display:flex;align-items:center;gap:6px;background:#f0f2f5;border-radius:8px;padding:6px 12px;">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
